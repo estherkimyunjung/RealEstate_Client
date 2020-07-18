@@ -12,7 +12,7 @@ function NavBar(){
             <a className="item" href={"/"}>
             <h2 className="ui header">
             <i className="paint brush icon" />
-            <div className="content">Painting App</div>
+            <div className="content">Home</div>
             </h2>
             </a>
             <div className="item">
@@ -26,6 +26,13 @@ function NavBar(){
             <h2 className="ui header">
                 <div className="content">
                     <Link to="/login" style={{color: "black"}}>Login</Link>
+                </div>
+            </h2>
+            </div>
+            <div className="item">
+            <h2 className="ui header">
+                <div className="content">
+                    <Link to="/profile" style={{color: "black"}}>Profile</Link>
                 </div>
             </h2>
             </div>
