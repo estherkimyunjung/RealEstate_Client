@@ -24,7 +24,8 @@ class SignUp extends Component {
         lastname: this.state.lastname,
         email: this.state.email,
         role: this.state.role,
-        avatar: this.state.avatar
+        avatar: this.state.avatar,
+        zipcode: this.state.zipcode
       })
     })
       .then(res => res.json())
@@ -53,6 +54,8 @@ class SignUp extends Component {
           <input onChange={(e) => this.handleChange(e)} name="role" type="text" />
           <label>Image</label>
           <input onChange={(e) => this.handleChange(e)} name="avatar" type="text" />
+          <label>Zip Code</label>
+          <input onChange={(e) => this.handleChange(e)} name="zipcode" type="text" />
           <input type="submit" />
         </form>
       </div>

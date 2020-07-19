@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './actions/auth/Login'
-import SignUp from './actions/auth/SignUp'
-import NavBar from './components/NavBar'
-import Profile from './components/Profile'
+import Login from './login/Login'
+import SignUp from './signup/SignUp'
+import NavBar from './common/NavBar'
+import Profile from './profile/Profile'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import './styles.css'
+// import './styles.css'
 // import {
 //   Button,
 //   Form,
