@@ -2,13 +2,14 @@ import React from 'react';
 import NavBar from './comon/NavBar.js';
 import Contents from './container/Contents';
 import Properties from './component/Properties';
+import Agents from './component/Agents';
 import AboutUs from './comon/AboutUs';
 import Login from './auth/Login'
 import SignUp from './auth/SignUp'
 import Contact from './component/Contact';
 import Profile from './comon/Profile'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import { Form, Button } from 'semantic-ui-react'
+import { Loader, Dimmer, Segment, Image } from 'semantic-ui-react'
 
 
 const USER_API = 'http://localhost:3000/api/v1/users'
@@ -34,18 +35,31 @@ class App extends React.Component {
 
   componentDidMount() {
     this.fetchProperties()
+    this.fetchAgents()
   }
 
   fetchProperties = () => {
     fetch(PROPERTY_API)
-      .then(res => res.json())
-      .then(properties => {
-        // console.log("properties", properties)
-        this.setState({
-          properties: properties,
-          isLoading: false
-        })
+    .then(res => res.json())
+    .then(properties => {
+      // console.log("properties", properties)
+      this.setState({
+        properties: properties,
+        isLoading: false
       })
+    })
+  }
+
+  fetchAgents = () => {
+    fetch(AGENT_API)
+    .then(res => res.json())
+    .then(agents => {
+      console.log("agents", agents)
+      this.setState({
+        agents: agents,
+        isLoading: false
+      })
+    })
   }
 
   fetchUser = () => {
@@ -103,10 +117,17 @@ class App extends React.Component {
     return (
       <div className="App">
         {this.state.isLoading
-          ? <Form loading>
-          <Form.Input label='Email' placeholder='joe@schmoe.com' />
-          <Button>Submit</Button>
-        </Form>
+          ? <Segment>
+            <Image src='/images/wireframe/short-paragraph.png' />
+            <Image src='/images/wireframe/short-paragraph.png' />
+            <Image src='/images/wireframe/short-paragraph.png' />
+            <Dimmer active>
+              <Loader size='huge'>Loading</Loader>
+            </Dimmer>      
+            <Image src='/images/wireframe/short-paragraph.png' />
+            <Image src='/images/wireframe/short-paragraph.png' />
+            <Image src='/images/wireframe/short-paragraph.png' />
+          </Segment>
           : <BrowserRouter>
               <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
               <Switch>
@@ -128,6 +149,10 @@ class App extends React.Component {
                 <Route exact path='/property' render={(routerProps) =>
                   <Properties 
                     properties={this.state.properties} 
+                    handleStateChange={this.handleStateChanges} />} />
+                <Route exact path='/agent' render={(routerProps) =>
+                  <Agents 
+                    agents={this.state.agents} 
                     handleStateChange={this.handleStateChanges} />} />
 
                 {/* component about us / contact us */}
