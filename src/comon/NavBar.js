@@ -19,17 +19,22 @@ class NavBar extends Component {
 
   render() {
     const { activeItem } = this.state
-    console.log("NAVBAR", this.props.properties)
+    // console.log("NAVBAR", this.props.properties)
     return (
       <div>
-        {/* TopBar */}
+
+      {/* TopBar */}
         <Segment inverted className="topBar">
+
+        {/* Home Button */}
           <Link to="/home">
             <Button basic color='yellow' inverted
               name='Home'
               active={activeItem === 'home'}
               onClick={this.handleItemClick}>Home 1800</Button>
           </Link>
+
+        {/* Sign Up  */}
           <Link to="/signup">
             <Button name='SignUp'
               active={activeItem === 'SignUp'}
@@ -38,6 +43,8 @@ class NavBar extends Component {
               inverted floated='right'
               style={{ width: '90px' }}>SignUp</Button>
           </Link>
+
+        {/* Login */}
           {localStorage.token
             ? <Link to="">
               <Button name='Logout'
@@ -55,6 +62,8 @@ class NavBar extends Component {
                 inverted floated='right'
                 style={{ width: '90px' }}>Login</Button>
             </Link>}
+
+        {/* Profile */}
           <Link to="/profile">
             <Button name='Profile'
               active={activeItem === 'Profile'}
@@ -66,8 +75,10 @@ class NavBar extends Component {
           </Link>
         </Segment>
 
-        {/* NavBar */}
+      {/* NavBar */}
         <Menu widths={7} className="navBar">
+
+        {/* Home Button with welcome Message */}
           <Menu.Item>
             <Link to="/home" style={{ color: 'black', textDecoration: 'none' }}>
               <Icon name='building outline' />
@@ -78,6 +89,7 @@ class NavBar extends Component {
           <Menu.Item>
           </Menu.Item>
 
+        {/* Propertu */}
           <Menu.Item
             name='property'
             active={activeItem === 'property'}
@@ -88,6 +100,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
+        {/* Agent */}
           <Menu.Item
             name='agent'
             active={activeItem === 'agent'}
@@ -98,6 +111,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
+        {/* Rebate */}
           <Menu.Item
             name='rebate'
             active={activeItem === 'rebate'}
@@ -108,6 +122,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
+        {/* About Us */}
           <Menu.Item
             name='aboutUs'
             active={activeItem === 'aboutUs'}
@@ -118,6 +133,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
+        {/* Contact Us */}
           <Menu.Item
             name='contact'
             active={activeItem === 'contact'}

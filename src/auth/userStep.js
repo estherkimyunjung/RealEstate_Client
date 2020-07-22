@@ -8,7 +8,7 @@ export default class userStep extends Component {
   render() {
     const { username, password, password_confirmation } = this.props.values
     return (
-      <Grid className="auth-main" style={{ height: '100vh' }}>
+      <Grid className="auth-main" style={{ height: '5vh' }}>
         <div className="auth-content">
           <div className="auth-card">
             <Segment stacked>
@@ -59,7 +59,7 @@ export default class userStep extends Component {
                 </Button>
 
                 <Message size="small">
-                  <Link style={{ color: '#7a6e6c' }} to="/login">Already Registered?</Link>
+                  <Link style={{ color: '#7a6e6c' }} to="/login"><strong>Already Registered?</strong></Link>
                 </Message>
 
               </Form>

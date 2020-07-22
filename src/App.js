@@ -1,20 +1,24 @@
 import React from 'react';
-import NavBar from './comon/NavBar.js';
-import Contents from './container/Contents';
-import Properties from './component/Properties';
-import AboutUs from './comon/AboutUs';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+
 import Login from './auth/Login'
 import SignUp from './auth/SignUp'
-import Contact from './component/Contact';
+import NavBar from './comon/NavBar.js';
+import AboutUs from './comon/AboutUs';
 import Profile from './comon/Profile'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import { Form, Button } from 'semantic-ui-react'
+import Contact from './comon/Contact';
+import Contents from './container/Contents';
+import Properties from './component/Properties';
+import Agents from './component/Agents';
+
+import { Loader, Dimmer, Segment, Image } from 'semantic-ui-react'
+import CompanyContainer from './component/CompanyContainer';
 
 
 const USER_API = 'http://localhost:3000/api/v1/users'
 const CLIENT_API = 'http://localhost:3000/api/v1/clients'
 const AGENT_API = 'http://localhost:3000/api/v1/agents'
-const COMPANY_API = 'http://localhost:3000/api/v1/companies'
+// const COMPANY_API = 'http://localhost:3000/api/v1/companies'
 const PROPERTY_API = 'http://localhost:3000/api/v1/properties'
 const APPOINTMENT_API = 'http://localhost:3000/api/v1/appointments'
 
@@ -25,28 +29,53 @@ class App extends React.Component {
     token: localStorage.token,
     user: JSON.parse(localStorage.getItem('user')),
     properties: [],
-    companies: [],
-    eventName: 'main',
-    propertyDetail: '',
     agents: [],
+    companyInfo: [],
+    eventName: 'main',
     isLoading: true
   }
 
   componentDidMount() {
     this.fetchProperties()
+    this.fetchAgents()
+    // this.fetchCompany()
   }
 
   fetchProperties = () => {
     fetch(PROPERTY_API)
-      .then(res => res.json())
-      .then(properties => {
-        // console.log("properties", properties)
-        this.setState({
-          properties: properties,
-          isLoading: false
-        })
+    .then(res => res.json())
+    .then(properties => {
+      // console.log("properties", properties)
+      this.setState({
+        properties: properties,
+        isLoading: false
       })
+    })
   }
+
+  fetchAgents = () => {
+    fetch(AGENT_API)
+    .then(res => res.json())
+    .then(agents => {
+      console.log("agents", agents)
+      this.setState({
+        agents: agents,
+        isLoading: false
+      })
+    })
+  }
+
+  // fetchCompany = () => {
+  //   fetch(COMPANY_API)
+  //   .then(res => res.json())
+  //   .then(companyInfo => {
+  //     console.log("companyInfo", companyInfo)
+  //     this.setState({
+  //       companyInfo: companyInfo,
+  //       isLoading: false
+  //     })
+  //   })
+  // }
 
   fetchUser = () => {
     fetch(USER_API + `/${this.state.user.id}`, {
@@ -103,12 +132,16 @@ class App extends React.Component {
     return (
       <div className="App">
         {this.state.isLoading
-          ? <Form loading>
-          <Form.Input label='Email' placeholder='joe@schmoe.com' />
-          <Button>Submit</Button>
-        </Form>
+          ? <Segment>
+            <Dimmer active>
+              <Loader size='big'>Loading</Loader>
+            </Dimmer>      
+          </Segment>
           : <BrowserRouter>
+              {/* static components Navbar / Contact / AboutUs*/}
               <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
+
+              {/* Condition Rendering other components */}
               <Switch>
                 <Route path='/login' render={(routerProps) =>
                   <Login 
@@ -129,6 +162,14 @@ class App extends React.Component {
                   <Properties 
                     properties={this.state.properties} 
                     handleStateChange={this.handleStateChanges} />} />
+                <Route exact path='/agent' render={(routerProps) =>
+                  <Agents 
+                    agents={this.state.agents} 
+                    handleStateChange={this.handleStateChanges} />} />
+                {/* <Route exact path='/contact' render={(routerProps) =>
+                  <Contact 
+                    companyInfo={this.state.companyInfo} 
+                    handleStateChange={this.handleStateChanges} />} /> */}
 
                 {/* component about us / contact us */}
                 {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
@@ -146,8 +187,11 @@ class App extends React.Component {
               <Route exact path="/about" component={About}/> */}
 
               </Switch>
-            <Contact />
-            <AboutUs />
+              <Contact 
+                    companyInfo={this.state.companyInfo} 
+                    handleStateChange={this.handleStateChanges} />
+              {/* <Contact/> */}
+              <AboutUs />
           </BrowserRouter>
         }
       </div>
