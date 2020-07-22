@@ -53,31 +53,70 @@ export default class Profile extends Component {
               <div>
                 <Form>
                   <Form.Field>
-                    <label>User name</label>
-                    <input value={this.state.username} name="username" onChange={(e) => this.handleChange(e.target.name, e.target.value)} placeholder={username} />
+                    <label><strong>User name</strong></label>
+                    <input 
+                      value={this.state.username} 
+                      name="username" 
+                      onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
+                      placeholder={username} 
+                      style={{ color: "#764b28" }} />
                   </Form.Field>
                   <Form.Field>
-                    <label>First name</label>
-                    <input value={this.state.firstname} name="firstname" onChange={(e) => this.handleChange(e.target.name, e.target.value)} placeholder={firstname} />
+                    <label><strong>First name</strong></label>
+                    <input 
+                      value={this.state.firstname} 
+                      name="firstname" 
+                      onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
+                      placeholder={firstname} 
+                      style={{ color: "#764b28" }}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Last name</label>
-                    <input value={this.state.lastname} name="lastname" onChange={(e) => this.handleChange(e.target.name, e.target.value)} placeholder={lastname} />
+                    <label><strong>Last name</strong></label>
+                    <input 
+                      value={this.state.lastname} 
+                      name="lastname" 
+                      onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
+                      placeholder={lastname} 
+                      style={{ color: "#764b28" }}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Email</label>
-                    <input value={this.state.email} name="email" onChange={(e) => this.handleChange(e.target.name, e.target.value)} placeholder={email} />
+                    <label><strong>Email</strong></label>
+                    <input 
+                      value={this.state.email} 
+                      name="email" 
+                      onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
+                      placeholder={email} 
+                      style={{ color: "#764b28" }}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Zipcode</label>
-                    <input name="zipcode" value={this.state.zipcode} type="number" onChange={(e) => this.handleChange(e.target.name, e.target.value)} placeholder={zipcode} />
+                    <label><strong>Zipcode</strong></label>
+                    <input 
+                      value={this.state.zipcode} 
+                      name="zipcode" 
+                      type="number" 
+                      onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
+                      placeholder={zipcode} 
+                      style={{ color: "#764b28" }}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Picture URL</label>
-                    <input name="avatar" value={this.state.avatar} type="text" onChange={(e) => this.handleChange(e.target.name, e.target.value)} placeholder='https://nofiredrills.com/wp-content/uploads/2016/10/myavatar.png' />
+                    <label><strong>Profile Picture / Avatar</strong></label>
+                    <input 
+                      value={this.state.avatar} 
+                      name="avatar" 
+                      type="text" 
+                      onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
+                      placeholder='https://nofiredrills.com/wp-content/uploads/2016/10/myavatar.png' 
+                      style={{ color: "#764b28" }}/>
                   </Form.Field>
-                  <Button content="Cancel" style={{ background: "#ad9d89" }} onClick={() => this.handleChange("edit", !this.state.edit)} />
-                  <Button content="Submit" color="blue" style={{ float: "right" }} onClick={() => this.handleSubmit()} />
+                  <Button 
+                    content="Cancel" 
+                    onClick={() => this.handleChange("edit", !this.state.edit)} 
+                    style={{ background: "#ad9d89" }}/>
+                  <Button 
+                    content="Submit" 
+                    onClick={() => this.handleSubmit()} 
+                    color="blue" 
+                    style={{ float: "right" }}/>
                 </Form>
               </div>
               :
