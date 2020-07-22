@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
 
-export default class infoStep extends Component {
+export default class ConfirmStep extends Component {
 
     render() {
         const { username, firstname, lastname, email, role, avatar, zipcode } = this.props.values

@@ -25,9 +25,7 @@ export default class AboutUs extends Component {
               </Grid.Row>
             </Grid>
           </Segment>
-
         </Container>
-
       </Segment>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Header, Button, Message, Grid, Segment } from 'semantic-ui-react';
 import './auth.css'
+import { Form, Header, Button, Message, Grid, Segment } from 'semantic-ui-react';
 
 export default class userStep extends Component {
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Segment, Menu, Button, Icon } from 'semantic-ui-react'
 import { withRouter, Link } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
 import './comon.css'
+import { Segment, Menu, Button, Icon } from 'semantic-ui-react'
 
 class NavBar extends Component {
 
@@ -19,6 +19,7 @@ class NavBar extends Component {
 
   render() {
     const { activeItem } = this.state
+    console.log("NAVBAR", this.props.properties)
     return (
       <div>
         {/* TopBar */}
@@ -68,7 +69,7 @@ class NavBar extends Component {
         {/* NavBar */}
         <Menu widths={7} className="navBar">
           <Menu.Item>
-            <Link to="/home" style={{color:'black', textDecoration:'none'}}>
+            <Link to="/home" style={{ color: 'black', textDecoration: 'none' }}>
               <Icon name='building outline' />
               Welcome to Home 1800
             </Link>
@@ -81,40 +82,50 @@ class NavBar extends Component {
             name='property'
             active={activeItem === 'property'}
             onClick={this.handleItemClick}>
-            <Icon name='building'/>
-            Property
+            <Link to="/property" style={{ color: 'black', textDecoration: 'none' }}>
+              <Icon name='building' />
+              Property
+            </Link>
           </Menu.Item>
 
           <Menu.Item
             name='agent'
             active={activeItem === 'agent'}
             onClick={this.handleItemClick}>
-            <Icon name='handshake'/>
-            Agent
+            <Link to="/agent" style={{ color: 'black', textDecoration: 'none' }}>
+              <Icon name='handshake' />
+              Agent
+            </Link>
           </Menu.Item>
 
           <Menu.Item
             name='rebate'
             active={activeItem === 'rebate'}
             onClick={this.handleItemClick}>
-            <Icon name='money'/>
-            Rebate
+            <Link to="/rebate" style={{ color: 'black', textDecoration: 'none' }}>
+              <Icon name='money' />
+              Rebate
+            </Link>
           </Menu.Item>
 
           <Menu.Item
-            name='about'
-            active={activeItem === 'about'}
+            name='aboutUs'
+            active={activeItem === 'aboutUs'}
             onClick={this.handleItemClick}>
-            <Icon name='group'/>
-            About Us
+            <Link to="/aboutUs" style={{ color: 'black', textDecoration: 'none' }}>
+              <Icon name='group' />
+              About Us
+            </Link>
           </Menu.Item>
 
           <Menu.Item
             name='contact'
             active={activeItem === 'contact'}
             onClick={this.handleItemClick}>
-            <Icon name='plug'/>
-            Contact Us
+            <Link to="/contact" style={{ color: 'black', textDecoration: 'none' }}>
+              <Icon name='plug' />
+              Contact Us
+            </Link>
           </Menu.Item>
         </Menu>
       </div>

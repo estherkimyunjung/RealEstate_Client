@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import UserStep from './userStep';
-import InfoStep from './infoStep';
-import ConfirmStep from './confirmStep';
 import { withRouter } from 'react-router-dom'
+import UserStep from './UserStep';
+import InfoStep from './InfoStep';
+import ConfirmStep from './ConfirmStep';
 
 class Signup extends Component {
 
@@ -98,6 +98,5 @@ class Signup extends Component {
     }
   }
 }
-
 export default withRouter(Signup);
 

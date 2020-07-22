@@ -1,14 +1,15 @@
 import React from 'react';
-
 import NavBar from './comon/NavBar.js';
-import Contents from './comon/Contents';
+import Contents from './container/Contents';
+import Properties from './component/Properties';
 import AboutUs from './comon/AboutUs';
 import Login from './auth/Login'
 import SignUp from './auth/SignUp'
-import Contact from './container/Contact';
+import Contact from './component/Contact';
 import Profile from './comon/Profile'
-
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { Form, Button } from 'semantic-ui-react'
+
 
 const USER_API = 'http://localhost:3000/api/v1/users'
 const CLIENT_API = 'http://localhost:3000/api/v1/clients'
@@ -39,12 +40,9 @@ class App extends React.Component {
     fetch(PROPERTY_API)
       .then(res => res.json())
       .then(properties => {
+        // console.log("properties", properties)
         this.setState({
           properties: properties,
-          property_one: properties[0],
-          property_two: properties[1],
-          property_three: properties[2],
-          property_four: properties[3],
           isLoading: false
         })
       })
@@ -101,12 +99,16 @@ class App extends React.Component {
 
   render() {
 
+    console.log("EST", this.state.properties)
     return (
       <div className="App">
         {this.state.isLoading
-          ? <h4> Loading... </h4>
+          ? <Form loading>
+          <Form.Input label='Email' placeholder='joe@schmoe.com' />
+          <Button>Submit</Button>
+        </Form>
           : <BrowserRouter>
-              <NavBar handleStateChange={this.handleStateChanges} />
+              <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
               <Switch>
                 <Route path='/login' render={(routerProps) =>
                   <Login 
@@ -119,7 +121,14 @@ class App extends React.Component {
                   editUserInfo={this.editUserInfo}
                   user={this.state.user} />
                   : <Redirect to='/login' />} />
-                <Route exact path='/home' component={Contents} />
+                <Route exact path='/home' render={(routerProps) =>
+                  <Contents 
+                    properties={this.state.properties} 
+                    handleStateChange={this.handleStateChanges} />} />
+                <Route exact path='/property' render={(routerProps) =>
+                  <Properties 
+                    properties={this.state.properties} 
+                    handleStateChange={this.handleStateChanges} />} />
 
                 {/* component about us / contact us */}
                 {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
@@ -147,5 +156,4 @@ class App extends React.Component {
 }
 
 export default App;
-
 
