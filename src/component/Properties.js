@@ -10,12 +10,12 @@ export default class Properties extends Component {
     return (
       <Container>
         <Segment>
-          <Grid stackable columns={4}>
+          <Grid stackable columns={2}>
             {this.props.properties.map(p =>
             <Grid.Column>
               <Segment>
-                <Image src={p.image} size='big' />
-                <p>{p.address}</p>
+                <Image src={p.image} size='big' style={{height:'300px'}}/>
+                <br/>
                 <Divider horizontal>
                   <Header as='h4'>
                     <Icon name='bar chart' />
@@ -39,6 +39,10 @@ export default class Properties extends Component {
                     <Table.Row>
                       <Table.Cell>Detail</Table.Cell>
                       <Table.Cell>{p.beds}Beds {p.baths}Baths {p.sqft}Sqft</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell>Address</Table.Cell>
+                      <Table.Cell>{p.address}</Table.Cell>
                     </Table.Row>
                   </Table.Body>
                 </Table>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, Grid, Segment, Divider } from 'semantic-ui-react'
 
 export default class Contact extends Component {
-  state = {}
   render() {
+    // console.log("COMINFO",this.props.companyInfo[0])
     return (
       <Container className='contact'>
         <Segment placeholder>

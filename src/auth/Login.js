@@ -25,21 +25,21 @@ class Login extends Component {
       })
     }
     fetch('http://localhost:3000/api/v1/login', options)
-    .then(res => res.json())
-    .then(userInfo => {
-      console.log("TOKEN_Login", userInfo.token)
-      console.log("Info_Login", userInfo)
-      localStorage.token = userInfo.token
-      localStorage.setItem("user", JSON.stringify({ ...userInfo }))
-      this.props.handleStateChange("token", userInfo.token)
-      this.props.handleStateChange("user", userInfo)
-      this.props.history.push('/home')
-    })
+      .then(res => res.json())
+      .then(userInfo => {
+        console.log("TOKEN_Login", userInfo.token)
+        console.log("Info_Login", userInfo)
+        localStorage.token = userInfo.token
+        localStorage.setItem("user", JSON.stringify({ ...userInfo }))
+        this.props.handleStateChange("token", userInfo.token)
+        this.props.handleStateChange("user", userInfo)
+        this.props.history.push('/home')
+      })
   }
 
   render() {
     return (
-      <div className="auth-main">
+      <div className="auth-main" style={{ height: '5vh' }}>
         <Grid>
           <div className="auth-content">
             <div className="auth-card">
@@ -76,7 +76,10 @@ class Login extends Component {
                   </Button>
 
                   <Message size="small">
-                    <Link style={{ color: '#7a6e6c' }} to="/signup">Not enrolled? Sign up now</Link>
+                    <Link 
+                      style={{ color: '#7a6e6c' }} to="/signup">
+                      <strong>Not enrolled ?  Sign up now</strong>
+                    </Link>
                   </Message>
 
                 </Form>

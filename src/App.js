@@ -1,15 +1,18 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+
+import Login from './auth/Login'
+import SignUp from './auth/SignUp'
 import NavBar from './comon/NavBar.js';
+import AboutUs from './comon/AboutUs';
+import Profile from './comon/Profile'
+import Contact from './comon/Contact';
 import Contents from './container/Contents';
 import Properties from './component/Properties';
 import Agents from './component/Agents';
-import AboutUs from './comon/AboutUs';
-import Login from './auth/Login'
-import SignUp from './auth/SignUp'
-import Contact from './component/Contact';
-import Profile from './comon/Profile'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+
 import { Loader, Dimmer, Segment, Image } from 'semantic-ui-react'
+import CompanyContainer from './component/CompanyContainer';
 
 
 const USER_API = 'http://localhost:3000/api/v1/users'
@@ -26,16 +29,16 @@ class App extends React.Component {
     token: localStorage.token,
     user: JSON.parse(localStorage.getItem('user')),
     properties: [],
-    companies: [],
-    eventName: 'main',
-    propertyDetail: '',
     agents: [],
+    companyInfo: [],
+    eventName: 'main',
     isLoading: true
   }
 
   componentDidMount() {
     this.fetchProperties()
     this.fetchAgents()
+    this.fetchCompany()
   }
 
   fetchProperties = () => {
@@ -57,6 +60,18 @@ class App extends React.Component {
       console.log("agents", agents)
       this.setState({
         agents: agents,
+        isLoading: false
+      })
+    })
+  }
+
+  fetchCompany = () => {
+    fetch(COMPANY_API)
+    .then(res => res.json())
+    .then(companyInfo => {
+      console.log("companyInfo", companyInfo)
+      this.setState({
+        companyInfo: companyInfo,
         isLoading: false
       })
     })
@@ -118,18 +133,15 @@ class App extends React.Component {
       <div className="App">
         {this.state.isLoading
           ? <Segment>
-            <Image src='/images/wireframe/short-paragraph.png' />
-            <Image src='/images/wireframe/short-paragraph.png' />
-            <Image src='/images/wireframe/short-paragraph.png' />
             <Dimmer active>
-              <Loader size='huge'>Loading</Loader>
+              <Loader size='big'>Loading</Loader>
             </Dimmer>      
-            <Image src='/images/wireframe/short-paragraph.png' />
-            <Image src='/images/wireframe/short-paragraph.png' />
-            <Image src='/images/wireframe/short-paragraph.png' />
           </Segment>
           : <BrowserRouter>
+              {/* static components Navbar / Contact / AboutUs*/}
               <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
+
+              {/* Condition Rendering other components */}
               <Switch>
                 <Route path='/login' render={(routerProps) =>
                   <Login 
@@ -154,6 +166,10 @@ class App extends React.Component {
                   <Agents 
                     agents={this.state.agents} 
                     handleStateChange={this.handleStateChanges} />} />
+                {/* <Route exact path='/contact' render={(routerProps) =>
+                  <Contact 
+                    companyInfo={this.state.companyInfo} 
+                    handleStateChange={this.handleStateChanges} />} /> */}
 
                 {/* component about us / contact us */}
                 {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
@@ -171,8 +187,11 @@ class App extends React.Component {
               <Route exact path="/about" component={About}/> */}
 
               </Switch>
-            <Contact />
-            <AboutUs />
+              <Contact 
+                    companyInfo={this.state.companyInfo} 
+                    handleStateChange={this.handleStateChanges} />
+              {/* <Contact/> */}
+              <AboutUs />
           </BrowserRouter>
         }
       </div>

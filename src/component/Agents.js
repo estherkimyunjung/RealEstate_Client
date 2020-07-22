@@ -7,8 +7,7 @@ export default class Agents extends Component {
 
   render() {
     console.log("Agents", this.props.agents)
-    // let Auser=[]
-    let Auser = this.props.agents.map(a => console.log(a.user.firstname))
+    // let Auser = this.props.agents.map(a => console.log(a.user.firstname))
     return (
       <Container>
         <Segment>

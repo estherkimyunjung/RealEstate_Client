@@ -11,7 +11,7 @@ export default class PropertiesContainer extends Component {
     return (
       <Grid.Column>
         <Segment>
-          <Image src={image} size='big' />
+          <Image src={image} size='big' style={{height:'160px'}}/>
           <p>{address}</p>
           <Divider horizontal>
             <Header as='h4'>

@@ -11,7 +11,7 @@ export default class InfoStep extends Component {
     ]
     const { firstname, lastname, email, role, avatar, zipcode } = this.props.values
     return (
-      <Grid className="auth-main" style={{ height: '100vh' }}>
+      <Grid className="auth-main" style={{ height: '5vh' }}>
         <div className="auth-content">
           <div className="auth-card">
             <Segment stacked>
@@ -96,7 +96,7 @@ export default class InfoStep extends Component {
                 </Button>
 
                 <Message size="small">
-                  <Link style={{ color: '#7a6e6c' }} to="/login">Already Have an Account?</Link>
+                  <Link style={{ color: '#7a6e6c' }} to="/login"><strong>Already Have an Account?</strong></Link>
                 </Message>
               </Form>
             </Segment>
