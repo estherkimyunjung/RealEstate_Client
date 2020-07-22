@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Map from '../container/Map'
-import { Container, Grid, Segment, Divider, Header, Icon } from 'semantic-ui-react'
+import { Container, Grid, Segment, Divider, Icon } from 'semantic-ui-react'
 
 class Contact extends Component {
   render() {

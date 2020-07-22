@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import RealEstateInfo from '../component/RealEstateInfo';
-import CompanyContainer from '../component/CompanyContainer';
 import PropertiesContainer from '../component/PropertiesContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../component/container.css'
@@ -37,7 +36,6 @@ class Contents extends Component {
         <RealEstateInfo />
         
         {/* Company Information and progress How to proceed */}
-        {/* <CompanyContainer /> */}
         
         {/* Newest Top 4 Properties */}
         <Container>

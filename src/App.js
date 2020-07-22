@@ -12,7 +12,6 @@ import Properties from './component/Properties';
 import Agents from './component/Agents';
 
 import { Loader, Dimmer, Segment, Image } from 'semantic-ui-react'
-import CompanyContainer from './component/CompanyContainer';
 
 
 const USER_API = 'http://localhost:3000/api/v1/users'
@@ -166,10 +165,6 @@ class App extends React.Component {
                   <Agents 
                     agents={this.state.agents} 
                     handleStateChange={this.handleStateChanges} />} />
-                {/* <Route exact path='/contact' render={(routerProps) =>
-                  <Contact 
-                    companyInfo={this.state.companyInfo} 
-                    handleStateChange={this.handleStateChanges} />} /> */}
 
                 {/* component about us / contact us */}
                 {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
@@ -187,10 +182,10 @@ class App extends React.Component {
               <Route exact path="/about" component={About}/> */}
 
               </Switch>
-              <Contact 
+              {/* <Contact 
                     companyInfo={this.state.companyInfo} 
-                    handleStateChange={this.handleStateChanges} />
-              {/* <Contact/> */}
+                    handleStateChange={this.handleStateChanges} /> */}
+              <Contact/>
               <AboutUs />
           </BrowserRouter>
         }
