@@ -5,7 +5,7 @@ import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
 export default class infoStep extends Component {
     state = {}
     render() {
-        const { username, password, password_confirmation, firstname, lastname, email, role, avatar, zipcode } = this.props.values
+        const { username, firstname, lastname, email, role, avatar, zipcode } = this.props.values
         return (
             <Grid className="auth-main" style={{ height: '100vh' }}>
                 <div className="auth-content">

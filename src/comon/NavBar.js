@@ -44,7 +44,7 @@ class NavBar extends Component {
                 onClick={this.handleLogout}
                 basic color='yellow'
                 inverted floated='right'
-                style={{ width: '90px' }}>Login</Button>
+                style={{ width: '90px' }}>Logout</Button>
             </Link>
             : <Link to="/login">
               <Button name='Login'
@@ -67,8 +67,11 @@ class NavBar extends Component {
         {/* NavBar */}
         <Menu widths={7} className="navBar">
           <Menu.Item>
-          <Icon name='building outline' />
-          Welcome to Home 1800
+          <Link to="/home" style={{color:'black', textDecoration:'none'}}>
+            <Icon name='building outline' />
+            Welcome to Home 1800
+          </Link>
+
           </Menu.Item>
 
           <Menu.Item>

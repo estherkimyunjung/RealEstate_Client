@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Grid, Image, Segment, Label, Divider } from 'semantic-ui-react'
+import { Container, Grid, Segment, Label } from 'semantic-ui-react'
 
 class CompanyContainer extends Component {
   state = {}

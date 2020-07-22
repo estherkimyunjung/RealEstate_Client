@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Grid, Image, Segment, Label, Divider } from 'semantic-ui-react'
+import { Container, Grid, Segment } from 'semantic-ui-react'
 
 class ShopperContainer extends Component {
   state = {  }

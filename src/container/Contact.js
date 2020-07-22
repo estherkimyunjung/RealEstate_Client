@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Grid, Image, Segment, Divider } from 'semantic-ui-react'
+import { Container, Grid, Segment, Divider } from 'semantic-ui-react'
 
 class Contact extends Component {
   state = {}

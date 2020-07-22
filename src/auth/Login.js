@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
-import { Button, Form, Message, Header, Segment, Grid, Image } from "semantic-ui-react";
+import { Button, Form, Message, Header, Segment, Grid } from "semantic-ui-react";
 import './auth.css';
 
 class Login extends Component {
@@ -13,6 +13,7 @@ class Login extends Component {
 
   logIn = (e) => {
     e.preventDefault()
+
     const options = {
       method: "POST",
       headers: {
@@ -24,14 +25,16 @@ class Login extends Component {
       })
     }
     fetch('http://localhost:3000/api/v1/login', options)
-      .then(res => res.json())
-      .then(userInfo => {
-        localStorage.token = userInfo.token
-        localStorage.setItem("user", JSON.stringify({ ...userInfo }))
-        this.props.handleStateChange("token", userInfo.token)
-        this.props.handleStateChange("user", userInfo)
-        // this.props.history.push('/dashboard')
-      })
+    .then(res => res.json())
+    .then(userInfo => {
+      console.log("TOKEN_Login", userInfo.token)
+      console.log("Info_Login", userInfo)
+      localStorage.token = userInfo.token
+      localStorage.setItem("user", JSON.stringify({ ...userInfo }))
+      this.props.handleStateChange("token", userInfo.token)
+      this.props.handleStateChange("user", userInfo)
+      this.props.history.push('/home')
+    })
   }
 
   render() {
@@ -51,7 +54,7 @@ class Login extends Component {
                     icon="user"
                     iconPosition="left"
                     name="username"
-                    placeholder="jsmith12"
+                    placeholder="est123"
                     className="auth-input-field"
                     onChange={this.handleChange}
                   />
@@ -69,7 +72,7 @@ class Login extends Component {
                   />
 
                   <Button style={{ background: "#7a6e6c" }} fluid size="huge">
-                    Sign in
+                    Login
                   </Button>
 
                   <Message size="small">
