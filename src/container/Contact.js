@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Grid, Segment, Divider } from 'semantic-ui-react'
 
-class Contact extends Component {
+export default class Contact extends Component {
   state = {}
   render() {
     return (
-      <Container>
+      <Container className='contact'>
         <Segment placeholder>
           <Grid columns={2} relaxed='very' stackable>
             <Grid.Column>
@@ -23,4 +23,3 @@ class Contact extends Component {
   }
 }
 
-export default Contact;

@@ -3,8 +3,9 @@ import SlideContent from '../container/SlideContent.js';
 import CompanyContainer from '../container/CompanyContainer.js';
 import ShopperContainer from '../container/ShopperContainer.js';
 import PropertiesContainer from '../container/PropertiesContainer.js';
-class Contents extends Component {
-  state = {  }
+
+export default class Contents extends Component {
+
   render() { 
     return ( 
       <div>
@@ -16,5 +17,4 @@ class Contents extends Component {
     );
   }
 }
- 
-export default Contents;
+

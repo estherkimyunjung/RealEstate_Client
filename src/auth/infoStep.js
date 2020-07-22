@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Grid, Segment, Header, Form, Button, Message } from 'semantic-ui-react';
 
 export default class infoStep extends Component {
+
   render() {
     const options = [
       { key: 's', text: 'Shopper', value: 'Shopper' },
@@ -106,3 +107,4 @@ export default class infoStep extends Component {
     );
   }
 }
+

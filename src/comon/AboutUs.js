@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Grid, Segment } from 'semantic-ui-react'
 
-class AboutUs extends Component {
-  state = {}
+export default class AboutUs extends Component {
+
   render() {
     return (
       <Segment inverted color='grey' className="aboutUs">
@@ -33,4 +33,3 @@ class AboutUs extends Component {
   }
 }
 
-export default AboutUs;

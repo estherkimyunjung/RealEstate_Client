@@ -108,20 +108,18 @@ class App extends React.Component {
           : <BrowserRouter>
               <NavBar handleStateChange={this.handleStateChanges} />
               <Switch>
-                <Route exact path='/home' component={Contents} />
-                <Route path='/signup' component={SignUp} />
-                <Route path='/aboutUs' component={AboutUs} />
                 <Route path='/login' render={(routerProps) =>
                   <Login 
-                    user={this.state.user} 
-                    handleStateChange={this.handleStateChanges} />} />
+                  user={this.state.user} 
+                  handleStateChange={this.handleStateChanges} />} />
+                <Route path='/signup' component={SignUp} />
                 <Route exact path="/profile" component={() =>
                   this.state.token
-                    ? <Profile
-                      // addEventToUser={this.addEventToUser} 
-                      editUserInfo={this.editUserInfo}
-                      user={this.state.user} />
-                    : <Redirect to='/login' />} />
+                  ? <Profile
+                  editUserInfo={this.editUserInfo}
+                  user={this.state.user} />
+                  : <Redirect to='/login' />} />
+                <Route exact path='/home' component={Contents} />
 
                 {/* component about us / contact us */}
                 {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
@@ -139,7 +137,7 @@ class App extends React.Component {
               <Route exact path="/about" component={About}/> */}
 
               </Switch>
-            <Contact eventName='main' />
+            <Contact />
             <AboutUs />
           </BrowserRouter>
         }

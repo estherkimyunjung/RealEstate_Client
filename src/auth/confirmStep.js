@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
 
 export default class infoStep extends Component {
-    state = {}
+
     render() {
         const { username, firstname, lastname, email, role, avatar, zipcode } = this.props.values
         return (
@@ -39,3 +39,4 @@ export default class infoStep extends Component {
         );
     }
 }
+

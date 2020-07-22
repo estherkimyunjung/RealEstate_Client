@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Grid, Segment, Label } from 'semantic-ui-react'
 
-class CompanyContainer extends Component {
-  state = {}
+export default class CompanyContainer extends Component {
+  
   render() {
     return (
       <Container>
@@ -44,4 +44,3 @@ class CompanyContainer extends Component {
   }
 }
 
-export default CompanyContainer;

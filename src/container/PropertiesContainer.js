@@ -3,8 +3,8 @@ import { Container, Grid, Segment, Image, Divider, Header, Icon, Table } from 's
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class PropertiesContainer extends Component {
-  state = {}
+export default class PropertiesContainer extends Component {
+
   render() {
     return (
       <Container>
@@ -149,4 +149,3 @@ class PropertiesContainer extends Component {
   }
 }
 
-export default PropertiesContainer;

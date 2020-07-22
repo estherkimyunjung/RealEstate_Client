@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Grid, Segment } from 'semantic-ui-react'
 
-class ShopperContainer extends Component {
-  state = {  }
+export default class ShopperContainer extends Component {
+
   render() { 
     return ( 
       <Container>
@@ -18,4 +18,3 @@ class ShopperContainer extends Component {
   }
 }
  
-export default ShopperContainer;

@@ -49,7 +49,7 @@ const SlideContent = () => (
       </Carousel.Item>
     </Carousel>
   </Container>
-
 )
 
 export default SlideContent
+

@@ -64,14 +64,14 @@ class NavBar extends Component {
               floated='right' />
           </Link>
         </Segment>
+
         {/* NavBar */}
         <Menu widths={7} className="navBar">
           <Menu.Item>
-          <Link to="/home" style={{color:'black', textDecoration:'none'}}>
-            <Icon name='building outline' />
-            Welcome to Home 1800
-          </Link>
-
+            <Link to="/home" style={{color:'black', textDecoration:'none'}}>
+              <Icon name='building outline' />
+              Welcome to Home 1800
+            </Link>
           </Menu.Item>
 
           <Menu.Item>
@@ -80,40 +80,46 @@ class NavBar extends Component {
           <Menu.Item
             name='property'
             active={activeItem === 'property'}
-            onClick={this.handleItemClick}
-          > <Icon name='building'/>
-          Property</Menu.Item>
+            onClick={this.handleItemClick}>
+            <Icon name='building'/>
+            Property
+          </Menu.Item>
 
           <Menu.Item
             name='agent'
             active={activeItem === 'agent'}
-            onClick={this.handleItemClick}
-          > <Icon name='handshake'/>
-          Agent</Menu.Item>
+            onClick={this.handleItemClick}>
+            <Icon name='handshake'/>
+            Agent
+          </Menu.Item>
 
           <Menu.Item
             name='rebate'
             active={activeItem === 'rebate'}
-            onClick={this.handleItemClick}
-          > <Icon name='money'/>
-          Rebate</Menu.Item>
+            onClick={this.handleItemClick}>
+            <Icon name='money'/>
+            Rebate
+          </Menu.Item>
 
           <Menu.Item
             name='about'
             active={activeItem === 'about'}
-            onClick={this.handleItemClick}
-          > <Icon name='group'/>
-          About Us</Menu.Item>
+            onClick={this.handleItemClick}>
+            <Icon name='group'/>
+            About Us
+          </Menu.Item>
 
           <Menu.Item
             name='contact'
             active={activeItem === 'contact'}
-            onClick={this.handleItemClick}
-          > <Icon name='plug'/>
-          Contact Us</Menu.Item>
+            onClick={this.handleItemClick}>
+            <Icon name='plug'/>
+            Contact Us
+          </Menu.Item>
         </Menu>
       </div>
     )
   }
 }
 export default withRouter(NavBar);
+

@@ -7,7 +7,7 @@ import {
   Form } from 'semantic-ui-react'
 
 
-class Profile extends Component {
+  export default class Profile extends Component {
   state = {
     edit: false,
     username: this.props.user.username,
@@ -96,4 +96,3 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
