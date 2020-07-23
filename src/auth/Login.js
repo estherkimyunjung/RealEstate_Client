@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
-import './auth.css';
 import { Button, Form, Message, Header, Segment, Grid } from "semantic-ui-react";
+import './auth.css';
 
 class Login extends Component {
 
