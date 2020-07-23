@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from "react-router-dom";
+import { Segment, Menu, Button, Icon } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 import './comon.css'
-import { Segment, Menu, Button, Icon } from 'semantic-ui-react'
 
 class NavBar extends Component {
 
@@ -135,10 +135,10 @@ class NavBar extends Component {
 
         {/* Contact Us */}
           <Menu.Item
-            name='contact'
-            active={activeItem === 'contact'}
+            name='contactUs'
+            active={activeItem === 'contactUs'}
             onClick={this.handleItemClick}>
-            <Link to="/contact" style={{ color: 'black', textDecoration: 'none' }}>
+            <Link to="/contactUs" style={{ color: 'black', textDecoration: 'none' }}>
               <Icon name='plug' />
               Contact Us
             </Link>

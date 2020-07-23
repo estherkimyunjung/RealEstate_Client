@@ -3,23 +3,25 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import Login from './auth/Login'
 import SignUp from './auth/SignUp'
-import NavBar from './comon/NavBar.js';
+import NavBar from './comon/NavBar'
+import SlideAdv from './comon/SliderAdv'
+import FooterCont from './container/FooterCont'
+import ContactUs from './comon/ContactUs'
 import AboutUs from './comon/AboutUs';
 import Profile from './comon/Profile'
-import Contact from './comon/Contact';
-import Contents from './container/Contents';
+import ContentCont from './container/ContentCont';
 import Properties from './component/Properties';
 import Agents from './component/Agents';
 
-import { Loader, Dimmer, Segment, Image } from 'semantic-ui-react'
+import { Loader, Dimmer, Segment } from 'semantic-ui-react'
 
 
 const USER_API = 'http://localhost:3000/api/v1/users'
-const CLIENT_API = 'http://localhost:3000/api/v1/clients'
+// const CLIENT_API = 'http://localhost:3000/api/v1/clients'
 const AGENT_API = 'http://localhost:3000/api/v1/agents'
 // const COMPANY_API = 'http://localhost:3000/api/v1/companies'
 const PROPERTY_API = 'http://localhost:3000/api/v1/properties'
-const APPOINTMENT_API = 'http://localhost:3000/api/v1/appointments'
+// const APPOINTMENT_API = 'http://localhost:3000/api/v1/appointments'
 
 class App extends React.Component {
 
@@ -137,10 +139,14 @@ class App extends React.Component {
             </Dimmer>      
           </Segment>
           : <BrowserRouter>
-              {/* static components Navbar / Contact / AboutUs*/}
+
+              {/* static components - Header: TopBar,NavBar / SliderAdv / Footer: AboutUs*/}
               <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
 
-              {/* Condition Rendering other components */}
+              {/* Slide All Properties Advertising Images */}
+              <SlideAdv handleStateChange={this.handleStateChanges} properties={this.state.properties} />
+
+              {/* Condition Rendering instead of Contentcont */}
               <Switch>
                 <Route path='/login' render={(routerProps) =>
                   <Login 
@@ -154,7 +160,7 @@ class App extends React.Component {
                   user={this.state.user} />
                   : <Redirect to='/login' />} />
                 <Route exact path='/home' render={(routerProps) =>
-                  <Contents 
+                  <ContentCont
                     properties={this.state.properties} 
                     handleStateChange={this.handleStateChanges} />} />
                 <Route exact path='/property' render={(routerProps) =>
@@ -165,6 +171,15 @@ class App extends React.Component {
                   <Agents 
                     agents={this.state.agents} 
                     handleStateChange={this.handleStateChanges} />} />
+                <Route exact path='/contactUs' render={(routerProps) =>
+                  <ContactUs 
+                    companyInfo={this.state.companyInfo} 
+                    handleStateChange={this.handleStateChanges} /> }/>
+                <Route exact path='/aboutUs' render={(routerProps) =>
+                  <AboutUs 
+                    companyInfo={this.state.companyInfo} 
+                    handleStateChange={this.handleStateChanges} /> }/>
+
 
                 {/* component about us / contact us */}
                 {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
@@ -182,11 +197,7 @@ class App extends React.Component {
               <Route exact path="/about" component={About}/> */}
 
               </Switch>
-              {/* <Contact 
-                    companyInfo={this.state.companyInfo} 
-                    handleStateChange={this.handleStateChanges} /> */}
-              <Contact/>
-              <AboutUs />
+              <FooterCont />
           </BrowserRouter>
         }
       </div>

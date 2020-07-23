@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import RealEstateInfo from '../component/RealEstateInfo';
-import PropertiesContainer from '../component/PropertiesContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../component/container.css'
-import { Container, Grid, Segment } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import { Carousel } from 'react-bootstrap';
+import './comon.css'
 
 
-class Contents extends Component {
+class SlideAdv extends Component {
   state = {}
   render() {
     console.log('properties', this.props.properties)
@@ -31,25 +29,9 @@ class Contents extends Component {
               </Carousel.Item>)}
           </Carousel>
         </Container>
-        
-        {/* Real Estate Information and News */}
-        <RealEstateInfo />
-        
-        {/* Company Information and progress How to proceed */}
-        
-        {/* Newest Top 4 Properties */}
-        <Container>
-          <Segment>
-            <Grid stackable columns={4}>
-              {this.props.properties.slice(0, 4).map(p =>
-                <PropertiesContainer property={p} />
-              )}
-            </Grid>
-          </Segment>
-        </Container>
       </div>
     );
   }
 }
-export default Contents;
+export default SlideAdv;
 
