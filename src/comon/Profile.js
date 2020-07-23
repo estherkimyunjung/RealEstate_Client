@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-import { Grid, Segment, Button, Form, Divider, Image } from 'semantic-ui-react'
+
 import Appointments from '../component/Appointments';
+
+import { 
+  Grid, 
+  Segment, 
+  Button, 
+  Form, 
+  Divider, 
+  Image } from 'semantic-ui-react'
 
 
 export default class Profile extends Component {

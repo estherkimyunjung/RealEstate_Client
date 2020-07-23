@@ -2,12 +2,14 @@ import _ from "lodash";
 import React from "react";
 import { compose, withProps } from "recompose";
 import keys from '../keys'
+
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker
 } from "react-google-maps";
+
 
 const MyMapComponent = compose(
   withProps({
@@ -32,3 +34,4 @@ const ReactGoogleMaps = () => [
 ];
 
 export default enhance(ReactGoogleMaps);
+

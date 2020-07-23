@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Grid, Segment } from 'semantic-ui-react'
+
+import { 
+  Container, 
+  Grid, 
+  Segment } from 'semantic-ui-react'
+  
 
 export default class AboutUs extends Component {
 

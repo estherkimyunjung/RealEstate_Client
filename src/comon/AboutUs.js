@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Map from './Map'
-import { Container, Segment } from 'semantic-ui-react'
+
+import { 
+  Container, 
+  Segment } from 'semantic-ui-react'
 
 
 class AboutUs extends Component {

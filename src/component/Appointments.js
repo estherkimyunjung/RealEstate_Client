@@ -84,3 +84,4 @@ const Appointments = (props) => (
 )
 
 export default Appointments
+

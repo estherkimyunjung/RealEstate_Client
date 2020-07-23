@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from "react-router-dom";
-import { Segment, Menu, Button, Icon } from 'semantic-ui-react'
+
+import { 
+  Segment, 
+  Menu, 
+  Button, 
+  Icon } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 import './comon.css'
+
 
 class NavBar extends Component {
 
@@ -86,10 +92,11 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
+        {/* Just created empty space so that I don't worry about CSS */}
           <Menu.Item>
           </Menu.Item>
 
-        {/* Propertu */}
+        {/* Property */}
           <Menu.Item
             name='property'
             active={activeItem === 'property'}

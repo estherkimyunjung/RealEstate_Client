@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Container, Grid, Segment, Divider, Icon } from 'semantic-ui-react'
+
 import Map from './Map'
 
+import { 
+  Container, 
+  Grid, 
+  Segment, 
+  Divider, 
+  Icon } from 'semantic-ui-react'
+
+  
 class ContactUs extends Component {
   render() {
     return (

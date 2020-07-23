@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import { Grid, Segment, Image, Divider, Header, Icon, Table, Container } from 'semantic-ui-react'
+
+import { 
+  Grid, 
+  Segment, 
+  Image, 
+  Divider, 
+  Header, 
+  Icon, 
+  Table, 
+  Container } from 'semantic-ui-react'
+  
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

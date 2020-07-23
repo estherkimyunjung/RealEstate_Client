@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { Grid, Segment, Image, Divider, Header, Icon, Table } from 'semantic-ui-react'
+
+import { 
+  Grid, 
+  Segment, 
+  Image, 
+  Divider, 
+  Header, 
+  Icon, 
+  Table } from 'semantic-ui-react'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -8,6 +17,7 @@ export default class PropertiesContainer extends Component {
   render() {
     console.log("Component", this.props.property)
     const { image, status, category, address, prices, beds, baths, sqft } = this.props.property
+    
     return (
       <Grid.Column>
         <Segment>

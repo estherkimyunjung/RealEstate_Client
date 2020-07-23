@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Segment, Header, Button, Message } from 'semantic-ui-react';
+
+import { 
+  Grid, 
+  Segment, 
+  Header, 
+  Button, 
+  Message } from 'semantic-ui-react';
 
 export default class ConfirmStep extends Component {
 
@@ -39,6 +45,4 @@ export default class ConfirmStep extends Component {
         );
     }
 }
-
-
 

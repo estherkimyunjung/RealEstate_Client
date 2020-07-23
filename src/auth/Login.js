@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
-import { Button, Form, Message, Header, Segment, Grid } from "semantic-ui-react";
+
+import { 
+  Button, 
+  Form, 
+  Message, 
+  Header, 
+  Segment, 
+  Grid } from "semantic-ui-react";
 import './auth.css';
 
 class Login extends Component {
@@ -92,7 +99,4 @@ class Login extends Component {
   };
 };
 export default withRouter(Login);
-
-
-
 

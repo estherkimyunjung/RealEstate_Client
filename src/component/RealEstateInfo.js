@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import { Container, Grid, Segment, Label } from 'semantic-ui-react'
 
+import { 
+  Container, 
+  Grid, 
+  Segment, 
+  Label } from 'semantic-ui-react'
+
+  
 export default class RealEstateInfo extends Component {
   
   render() {

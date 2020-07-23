@@ -1,9 +1,19 @@
 import React from 'react'
-import { Button, Form, Container, Segment, TextArea, Input, Label, Select } from 'semantic-ui-react'
+
+import { 
+  Button, 
+  Form, 
+  Container, 
+  Segment, 
+  TextArea, 
+  Input, 
+  Label, 
+  Select } from 'semantic-ui-react'
+
 import '../auth/auth.css'
 
+
 class Rebate extends React.Component {
-  state = {}
 
   render() {
 

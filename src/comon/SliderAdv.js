@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Container } from 'semantic-ui-react'
 import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './comon.css'
 
 
 class SlideAdv extends Component {
-  state = {}
+
   render() {
     console.log('properties', this.props.properties)
+    
     return (
       <div>
         {/* Slide All Properties Advertising Images */}

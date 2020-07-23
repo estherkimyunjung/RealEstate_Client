@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import keys from '../keys'
-import { Map, InfoWindow, Marker, GoogleApiWrapper, Circle } from 'google-maps-react';
+
 import { Icon } from 'semantic-ui-react'
+import { Map, 
+  InfoWindow, 
+  Marker, 
+  GoogleApiWrapper, 
+  Circle } from 'google-maps-react';
 
 
 export class MapContainer extends Component {
@@ -58,7 +63,8 @@ export class MapContainer extends Component {
           onClick={this.onMarkerClick}
           title={'The marker`s title will appear as a tooltip.'}
           name={'Current location'}
-          position={{ lat: lat, lng: long }} />
+          position={{ lat: lat, lng: long }} 
+        />
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
