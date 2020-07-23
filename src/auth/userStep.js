@@ -10,7 +10,7 @@ import {
   Segment } from 'semantic-ui-react';
 import './auth.css'
 
-export default class userStep extends Component {
+class userStep extends Component {
 
   render() {
     const { username, password, password_confirmation } = this.props.values
@@ -76,8 +76,6 @@ export default class userStep extends Component {
       </Grid>
     );
   }
-
-
-
-  
 }
+export default userStep
+

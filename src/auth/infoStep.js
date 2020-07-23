@@ -10,7 +10,7 @@ import {
   Message } from 'semantic-ui-react';
 import './auth.css';
 
-export default class InfoStep extends Component {
+class InfoStep extends Component {
 
   render() {
     const options = [
@@ -113,12 +113,7 @@ export default class InfoStep extends Component {
         </div>
       </Grid>
     );
-  }
-
-
-
-  
+  }  
 }
-
-
+export default InfoStep
 
