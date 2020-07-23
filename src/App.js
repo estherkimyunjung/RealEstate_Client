@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Login from './auth/Login'
 import SignUp from './auth/SignUp'
 import NavBar from './comon/NavBar';
+import SlideAdv from './comon/SliderAdv'
 import ContactUs from './comon/ContactUs'
 import AboutUs from './comon/AboutUs';
 import Profile from './comon/Profile'
@@ -139,6 +140,9 @@ class App extends React.Component {
           : <BrowserRouter>
               {/* static components Navbar / Contact / AboutUs*/}
               <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
+              
+              {/* Slide All Properties Advertising Images */}
+              <SlideAdv handleStateChange={this.handleStateChanges} properties={this.state.properties} />
 
               {/* Condition Rendering other components */}
               <Switch>
