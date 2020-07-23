@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import Map from '../container/Map'
 import { Container, Grid, Segment, Divider, Icon } from 'semantic-ui-react'
 
-class Contact extends Component {
+class ContactUs extends Component {
   render() {
     return (
-      <Container className='contact'>
+      <Container className='contactUs'>
         <Segment placeholder>
           <Grid columns={2} relaxed='very' stackable>
             <Grid.Column className='contactInfo'>
@@ -52,4 +52,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(Contact)
+export default connect(mapStateToProps)(ContactUs)

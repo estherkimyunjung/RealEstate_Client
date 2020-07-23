@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import Login from './auth/Login'
 import SignUp from './auth/SignUp'
-import NavBar from './comon/NavBar.js';
+import NavBar from './comon/NavBar';
+import ContactUs from './comon/ContactUs'
 import AboutUs from './comon/AboutUs';
 import Profile from './comon/Profile'
-import Contact from './comon/Contact';
 import Contents from './container/Contents';
 import Properties from './component/Properties';
 import Agents from './component/Agents';
@@ -165,6 +165,11 @@ class App extends React.Component {
                   <Agents 
                     agents={this.state.agents} 
                     handleStateChange={this.handleStateChanges} />} />
+                <Route exact path='/contactUs' render={(routerProps) =>
+                  <ContactUs 
+                    companyInfo={this.state.companyInfo} 
+                    handleStateChange={this.handleStateChanges} /> }/>
+
 
                 {/* component about us / contact us */}
                 {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
@@ -182,10 +187,6 @@ class App extends React.Component {
               <Route exact path="/about" component={About}/> */}
 
               </Switch>
-              {/* <Contact 
-                    companyInfo={this.state.companyInfo} 
-                    handleStateChange={this.handleStateChanges} /> */}
-              <Contact/>
               <AboutUs />
           </BrowserRouter>
         }
