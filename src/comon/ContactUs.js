@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Container, Grid, Segment, Divider, Icon } from 'semantic-ui-react'
-import CompanyMap from '../component/CompanyMap';
+import Map from './Map'
 
 class ContactUs extends Component {
   render() {
@@ -23,8 +23,7 @@ class ContactUs extends Component {
               <h4 style={{textAlign:'center',lineHeight: '2em', color: "#764b28"}}><strong>{this.props.sloganThree}</strong></h4>
             </Grid.Column>
             <Grid.Column>
-              {/* <Map lat={this.props.latitude} long={this.props.longitude}/> */}
-              <CompanyMap lat={this.props.latitude} long={this.props.longitude}/>
+              <Map lat={this.props.latitude} long={this.props.longitude}/>
             </Grid.Column>
           </Grid>
           <Divider vertical><Icon name='map outline'/></Divider>

@@ -18,14 +18,14 @@ export class MapContainer extends Component {
       showingInfoWindow: true
     });
 
-    onMapClicked = (props) => {
-      if (this.state.showingInfoWindow) {
-        this.setState({
-          showingInfoWindow: false,
-          activeMarker: null
-        })
-      }
-    };
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  };
 
   render() {
     console.log("PM", this.props)
@@ -39,7 +39,7 @@ export class MapContainer extends Component {
         onClick={this.onMapClicked}
         initialCenter={coords}
         google={this.props.google}
-        style={{ width: 500, height: 350, position:'relative'}}
+        style={{ width: 500, height: 350, position: 'relative' }}
         zoom={15}
       >
         <Circle
@@ -62,10 +62,10 @@ export class MapContainer extends Component {
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
-            <div>
-              <h3><Icon name='building outline' />Home1800</h3>
-            </div>
-        </InfoWindow>  
+          <div>
+            <h3><Icon name='building outline' />Home1800</h3>
+          </div>
+        </InfoWindow>
       </Map>
     )
   }
