@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
-import UserStep from './UserSteppp';
-import InfoStep from './InfoSteppp';
+import UserStep from './UserStep';
+import InfoStep from './InfoStep';
 import ConfirmStep from './ConfirmStep';
 
 import './auth.css'

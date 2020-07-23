@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class PropertyDetail extends Component {
+class PropertyUpdate extends Component {
   state = {  }
   render() { 
     return ( 
-      <h1>PropertyDetail</h1>
+      <h1>PropertyUpdate</h1>
      );
   }
 }
  
-export default PropertyDetail;
+export default PropertyUpdate;
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class PropertyDetail extends Component {
+class AgentAccount extends Component {
   state = {  }
   render() { 
     return ( 
-      <h1>PropertyDetail</h1>
+      <h1>AgentAccount</h1>
      );
   }
 }
  
-export default PropertyDetail;
+export default AgentAccount;
 
