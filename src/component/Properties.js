@@ -10,11 +10,11 @@ export default class Properties extends Component {
     return (
       <Container>
         <Segment>
-          <Grid stackable columns={2}>
+          <Grid stackable columns={3}>
             {this.props.properties.map(p =>
             <Grid.Column>
               <Segment>
-                <Image src={p.image} size='big' style={{height:'300px'}}/>
+                <Image src={p.image} size='big' style={{height:'240px'}}/>
                 <br/>
                 <Divider horizontal>
                   <Header as='h4'>

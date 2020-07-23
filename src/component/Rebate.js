@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Container, Segment, TextArea, Input, Label, Image, Select } from 'semantic-ui-react'
+import { Button, Form, Container, Segment, TextArea, Input, Label, Select } from 'semantic-ui-react'
 import '../auth/auth.css'
 
 class Rebate extends React.Component {
@@ -17,10 +17,11 @@ class Rebate extends React.Component {
     return (
       <div>
         <Container>
+          <br/>
           <Segment padded>
-            <Label attached='top'><h3>Rebate Request Here</h3></Label>
-            <Image src='/images/wireframe/paragraph.png' />
-
+            <br/>
+            <Label attached='top'><h3 style={{textAlign:'right', lineHeight: '2em'}}>Rebate Request Here</h3></Label>
+            <br/><br/><br/>
             <Form>
               <Form.Group unstackable widths={2}>
                 <Form.Input label='First name' placeholder='First name' />
