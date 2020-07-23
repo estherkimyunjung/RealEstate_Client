@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from "react-router-dom";
+import { Segment, Menu, Button, Icon } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 import './comon.css'
-import { Segment, Menu, Button, Icon } from 'semantic-ui-react'
 
 class NavBar extends Component {
 

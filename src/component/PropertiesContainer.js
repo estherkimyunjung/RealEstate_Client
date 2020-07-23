@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Grid, Segment, Image, Divider, Header, Icon, Table } from 'semantic-ui-react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default class PropertiesContainer extends Component {

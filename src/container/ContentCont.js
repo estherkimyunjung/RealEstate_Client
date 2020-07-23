@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import RealEstateInfo from '../component/RealEstateInfo';
 import PropertiesContainer from '../component/PropertiesContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../component/container.css'
+import './container.css'
 import { Container, Grid, Segment } from 'semantic-ui-react'
-import { Carousel } from 'react-bootstrap';
 
 
-class Contents extends Component {
+export default class ContentCont extends Component {
   state = {}
   render() {
     console.log('properties', this.props.properties)
@@ -30,5 +29,4 @@ class Contents extends Component {
     );
   }
 }
-export default Contents;
 
