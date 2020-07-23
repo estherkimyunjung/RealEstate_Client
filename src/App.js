@@ -12,6 +12,7 @@ import Profile from './comon/Profile'
 import ContentCont from './container/ContentCont';
 import Properties from './component/Properties';
 import Agents from './component/Agents';
+import Rebate from './component/Rebate'
 
 import { Loader, Dimmer, Segment } from 'semantic-ui-react'
 
@@ -21,7 +22,7 @@ const USER_API = 'http://localhost:3000/api/v1/users'
 const AGENT_API = 'http://localhost:3000/api/v1/agents'
 // const COMPANY_API = 'http://localhost:3000/api/v1/companies'
 const PROPERTY_API = 'http://localhost:3000/api/v1/properties'
-// const APPOINTMENT_API = 'http://localhost:3000/api/v1/appointments'
+const APPOINTMENT_API = 'http://localhost:3000/api/v1/appointments'
 
 class App extends React.Component {
 
@@ -31,6 +32,7 @@ class App extends React.Component {
     user: JSON.parse(localStorage.getItem('user')),
     properties: [],
     agents: [],
+    appointments: [],
     companyInfo: [],
     eventName: 'main',
     isLoading: true
@@ -61,6 +63,18 @@ class App extends React.Component {
       console.log("agents", agents)
       this.setState({
         agents: agents,
+        isLoading: false
+      })
+    })
+  }
+
+  fetchAppointments = () => {
+    fetch(APPOINTMENT_API)
+    .then(res => res.json())
+    .then(appointments => {
+      console.log("appointments", appointments)
+      this.setState({
+        appointments: appointments,
         isLoading: false
       })
     })
@@ -157,7 +171,8 @@ class App extends React.Component {
                   this.state.token
                   ? <Profile
                   editUserInfo={this.editUserInfo}
-                  user={this.state.user} />
+                  user={this.state.user} 
+                  appointments={this.state.appointments}/>
                   : <Redirect to='/login' />} />
                 <Route exact path='/home' render={(routerProps) =>
                   <ContentCont
@@ -171,6 +186,12 @@ class App extends React.Component {
                   <Agents 
                     agents={this.state.agents} 
                     handleStateChange={this.handleStateChanges} />} />
+                <Route exact path='/rebate' render={(routerProps) =>
+                  <Rebate 
+                  user={this.state.user} 
+                  agents={this.state.agents}
+                  appointments={this.state.appointments} 
+                  handleStateChange={this.handleStateChanges} />} />
                 <Route exact path='/contactUs' render={(routerProps) =>
                   <ContactUs 
                     companyInfo={this.state.companyInfo} 

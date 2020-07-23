@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Segment, Button, Form, Divider, Image } from 'semantic-ui-react'
+import Appointments from '../component/Appointments';
 
 
 export default class Profile extends Component {
@@ -121,7 +122,7 @@ export default class Profile extends Component {
               </div>
               :
               <div>
-                <h3> Appointment Informations </h3>
+                <Appointments/>
               </div>
             }
           </Segment>
