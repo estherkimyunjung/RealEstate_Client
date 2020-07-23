@@ -13,14 +13,13 @@ import ContentCont from './container/ContentCont';
 import Properties from './component/Properties';
 import Agents from './component/Agents';
 import Rebate from './component/Rebate'
-
 import { Loader, Dimmer, Segment } from 'semantic-ui-react'
 
 
 const USER_API = 'http://localhost:3000/api/v1/users'
 // const CLIENT_API = 'http://localhost:3000/api/v1/clients'
 const AGENT_API = 'http://localhost:3000/api/v1/agents'
-// const COMPANY_API = 'http://localhost:3000/api/v1/companies'
+const COMPANY_API = 'http://localhost:3000/api/v1/companies'
 const PROPERTY_API = 'http://localhost:3000/api/v1/properties'
 const APPOINTMENT_API = 'http://localhost:3000/api/v1/appointments'
 
@@ -31,6 +30,7 @@ class App extends React.Component {
     token: localStorage.token,
     user: JSON.parse(localStorage.getItem('user')),
     properties: [],
+    displayPro: [],
     agents: [],
     appointments: [],
     companyInfo: [],
@@ -41,56 +41,57 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchProperties()
     this.fetchAgents()
-    // this.fetchCompany()
+    this.fetchCompany()
   }
 
   fetchProperties = () => {
     fetch(PROPERTY_API)
-    .then(res => res.json())
-    .then(properties => {
-      // console.log("properties", properties)
-      this.setState({
-        properties: properties,
-        isLoading: false
+      .then(res => res.json())
+      .then(properties => {
+        // console.log("properties", properties)
+        this.setState({
+          properties: properties,
+          displayPro: properties,
+          isLoading: false
+        })
       })
-    })
   }
 
   fetchAgents = () => {
     fetch(AGENT_API)
-    .then(res => res.json())
-    .then(agents => {
-      console.log("agents", agents)
-      this.setState({
-        agents: agents,
-        isLoading: false
+      .then(res => res.json())
+      .then(agents => {
+        console.log("agents", agents)
+        this.setState({
+          agents: agents,
+          isLoading: false
+        })
       })
-    })
   }
 
   fetchAppointments = () => {
     fetch(APPOINTMENT_API)
-    .then(res => res.json())
-    .then(appointments => {
-      console.log("appointments", appointments)
-      this.setState({
-        appointments: appointments,
-        isLoading: false
+      .then(res => res.json())
+      .then(appointments => {
+        console.log("appointments", appointments)
+        this.setState({
+          appointments: appointments,
+          isLoading: false
+        })
       })
-    })
   }
 
-  // fetchCompany = () => {
-  //   fetch(COMPANY_API)
-  //   .then(res => res.json())
-  //   .then(companyInfo => {
-  //     console.log("companyInfo", companyInfo)
-  //     this.setState({
-  //       companyInfo: companyInfo,
-  //       isLoading: false
-  //     })
-  //   })
-  // }
+  fetchCompany = () => {
+    fetch(COMPANY_API)
+      .then(res => res.json())
+      .then(companyInfo => {
+        console.log("companyInfo", companyInfo)
+        this.setState({
+          companyInfo: companyInfo,
+          isLoading: false
+        })
+      })
+  }
 
   fetchUser = () => {
     fetch(USER_API + `/${this.state.user.id}`, {
@@ -150,75 +151,75 @@ class App extends React.Component {
           ? <Segment>
             <Dimmer active>
               <Loader size='big'>Loading</Loader>
-            </Dimmer>      
+            </Dimmer>
           </Segment>
           : <BrowserRouter>
 
-              {/* static components - Header: TopBar,NavBar / SliderAdv / Footer: AboutUs*/}
-              <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
+            {/* static components - Header: TopBar,NavBar / SliderAdv / Footer: AboutUs*/}
+            <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
 
-              {/* Slide All Properties Advertising Images */}
-              <SlideAdv handleStateChange={this.handleStateChanges} properties={this.state.properties} />
+            {/* Slide All Properties Advertising Images */}
+            <SlideAdv handleStateChange={this.handleStateChanges} properties={this.state.properties} />
 
-              {/* Condition Rendering instead of Contentcont */}
-              <Switch>
-                <Route path='/login' render={(routerProps) =>
-                  <Login 
-                  user={this.state.user} 
+            {/* Condition Rendering instead of Contentcont */}
+            <Switch>
+              <Route path='/login' render={(routerProps) =>
+                <Login
+                  user={this.state.user}
                   handleStateChange={this.handleStateChanges} />} />
-                <Route path='/signup' component={SignUp} />
-                <Route exact path="/profile" component={() =>
-                  this.state.token
+              <Route path='/signup' component={SignUp} />
+              <Route exact path="/profile" component={() =>
+                this.state.token
                   ? <Profile
-                  editUserInfo={this.editUserInfo}
-                  user={this.state.user} 
-                  appointments={this.state.appointments}/>
+                    editUserInfo={this.editUserInfo}
+                    user={this.state.user}
+                    appointments={this.state.appointments} />
                   : <Redirect to='/login' />} />
-                <Route exact path='/home' render={(routerProps) =>
-                  <ContentCont
-                    properties={this.state.properties} 
-                    handleStateChange={this.handleStateChanges} />} />
-                <Route exact path='/property' render={(routerProps) =>
-                  <Properties 
-                    properties={this.state.properties} 
-                    handleStateChange={this.handleStateChanges} />} />
-                <Route exact path='/agent' render={(routerProps) =>
-                  <Agents 
-                    agents={this.state.agents} 
-                    handleStateChange={this.handleStateChanges} />} />
-                <Route exact path='/rebate' render={(routerProps) =>
-                  <Rebate 
-                  user={this.state.user} 
-                  agents={this.state.agents}
-                  appointments={this.state.appointments} 
+              <Route exact path='/home' render={(routerProps) =>
+                <ContentCont
+                  properties={this.state.properties}
                   handleStateChange={this.handleStateChanges} />} />
-                <Route exact path='/contactUs' render={(routerProps) =>
-                  <ContactUs 
-                    companyInfo={this.state.companyInfo} 
-                    handleStateChange={this.handleStateChanges} /> }/>
-                <Route exact path='/aboutUs' render={(routerProps) =>
-                  <AboutUs 
-                    companyInfo={this.state.companyInfo} 
-                    handleStateChange={this.handleStateChanges} /> }/>
+              <Route exact path='/property' render={(routerProps) =>
+                <Properties
+                  properties={this.state.properties}
+                  handleStateChange={this.handleStateChanges} />} />
+              <Route exact path='/agent' render={(routerProps) =>
+                <Agents
+                  agents={this.state.agents}
+                  handleStateChange={this.handleStateChanges} />} />
+              <Route exact path='/rebate' render={(routerProps) =>
+                <Rebate
+                  user={this.state.user}
+                  agents={this.state.agents}
+                  appointments={this.state.appointments}
+                  handleStateChange={this.handleStateChanges} />} />
+              <Route exact path='/contactUs' render={(routerProps) =>
+                <ContactUs
+                  companyInfo={this.state.companyInfo}
+                  handleStateChange={this.handleStateChanges} />} />
+              <Route exact path='/aboutUs' render={(routerProps) =>
+                <AboutUs
+                  companyInfo={this.state.companyInfo}
+                  handleStateChange={this.handleStateChanges} />} />
 
 
-                {/* component about us / contact us */}
-                {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
-                {/* <Route path='/houses' render={(routerProps) => <HouseDisplay {...routerProps}houses={this.state.houses}/> with routerProps and props*/}
-                {/* <Route path='/houses/:id' component={HouseDiplay}/> without props but info component currnet house id is: {this.props.match.params.id}*/}
-                {/* <Route path='/houses/new' render={(routerProps) => <HouseForm {...routerProps} addHouse={this.addHouse}/> */}
-                {/* <Link to='/home'>Go to Home</Link> import {Link} from react-router-dom redireact the rout*/}
-                {/* handleSubmit = () => {this.props.history.push('/house')} redirect after submit*/}
-                {/* <Link to='/home'>Go to Home</Link> */}
-                {/* <Route path='/profile' component={Profile}/> */}
-                {/* <Route exact path="/dashboard" component={() => 
+              {/* component about us / contact us */}
+              {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
+              {/* <Route path='/houses' render={(routerProps) => <HouseDisplay {...routerProps}houses={this.state.houses}/> with routerProps and props*/}
+              {/* <Route path='/houses/:id' component={HouseDiplay}/> without props but info component currnet house id is: {this.props.match.params.id}*/}
+              {/* <Route path='/houses/new' render={(routerProps) => <HouseForm {...routerProps} addHouse={this.addHouse}/> */}
+              {/* <Link to='/home'>Go to Home</Link> import {Link} from react-router-dom redireact the rout*/}
+              {/* handleSubmit = () => {this.props.history.push('/house')} redirect after submit*/}
+              {/* <Link to='/home'>Go to Home</Link> */}
+              {/* <Route path='/profile' component={Profile}/> */}
+              {/* <Route exact path="/dashboard" component={() => 
                 this.state.token 
                 ? <Dashboard/> 
                 : <Redirect to='/login'/>} />
               <Route exact path="/about" component={About}/> */}
 
-              </Switch>
-              <FooterCont />
+            </Switch>
+            <FooterCont />
           </BrowserRouter>
         }
       </div>
