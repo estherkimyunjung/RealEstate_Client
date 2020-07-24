@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { withRouter, Link } from "react-router-dom";
-
+import { withRouter, Link } from "react-router-dom"
 import { 
   Segment, 
   Menu, 
   Button, 
   Icon } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css';
+import 'semantic-ui-css/semantic.min.css'
 import './comon.css'
 
 
@@ -20,19 +19,20 @@ class NavBar extends Component {
     localStorage.clear()
     this.props.handleStateChange("token", null)
   }
+
   //  These menu options will need to point to methods in app.js to display the appropriate content.
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
     const { activeItem } = this.state
     // console.log("NAVBAR", this.props.properties)
+
     return (
       <div>
-
-      {/* TopBar */}
+        {/* TopBar */}
         <Segment inverted className="topBar">
 
-        {/* Home Button */}
+          {/* Home Button */}
           <Link to="/home">
             <Button basic color='yellow' inverted
               name='Home'
@@ -40,7 +40,7 @@ class NavBar extends Component {
               onClick={this.handleItemClick}>Home 1800</Button>
           </Link>
 
-        {/* Sign Up  */}
+          {/* Sign Up  */}
           <Link to="/signup">
             <Button name='SignUp'
               active={activeItem === 'SignUp'}
@@ -50,7 +50,7 @@ class NavBar extends Component {
               style={{ width: '90px' }}>SignUp</Button>
           </Link>
 
-        {/* Login */}
+          {/* Login */}
           {localStorage.token
             ? <Link to="">
               <Button name='Logout'
@@ -69,7 +69,7 @@ class NavBar extends Component {
                 style={{ width: '90px' }}>Login</Button>
             </Link>}
 
-        {/* Profile */}
+          {/* Profile */}
           <Link to="/profile">
             <Button name='Profile'
               active={activeItem === 'Profile'}
@@ -81,10 +81,10 @@ class NavBar extends Component {
           </Link>
         </Segment>
 
-      {/* NavBar */}
+        {/* NavBar */}
         <Menu widths={7} className="navBar">
 
-        {/* Home Button with welcome Message */}
+          {/* Home Button with welcome Message */}
           <Menu.Item>
             <Link to="/home" style={{ color: 'black', textDecoration: 'none' }}>
               <Icon name='building outline' />
@@ -92,11 +92,11 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
-        {/* Just created empty space so that I don't worry about CSS */}
+          {/* Just created empty space so that I don't worry about CSS */}
           <Menu.Item>
           </Menu.Item>
 
-        {/* Property */}
+          {/* Property */}
           <Menu.Item
             name='property'
             active={activeItem === 'property'}
@@ -107,7 +107,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
-        {/* Agent */}
+          {/* Agent */}
           <Menu.Item
             name='agent'
             active={activeItem === 'agent'}
@@ -118,7 +118,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
-        {/* Rebate */}
+          {/* Rebate */}
           <Menu.Item
             name='rebate'
             active={activeItem === 'rebate'}
@@ -129,7 +129,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
-        {/* About Us */}
+          {/* About Us */}
           <Menu.Item
             name='aboutUs'
             active={activeItem === 'aboutUs'}
@@ -140,7 +140,7 @@ class NavBar extends Component {
             </Link>
           </Menu.Item>
 
-        {/* Contact Us */}
+          {/* Contact Us */}
           <Menu.Item
             name='contactUs'
             active={activeItem === 'contactUs'}
@@ -155,5 +155,5 @@ class NavBar extends Component {
     )
   }
 }
-export default withRouter(NavBar);
+export default withRouter(NavBar)
 

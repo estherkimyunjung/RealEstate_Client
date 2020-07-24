@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
-
 import { 
   Button, 
   Form, 
@@ -9,6 +8,7 @@ import {
   Segment, 
   Grid } from "semantic-ui-react";
 import './auth.css';
+
 
 class Login extends Component {
 
@@ -31,20 +31,22 @@ class Login extends Component {
         password: this.state.password
       })
     }
+
     fetch('http://localhost:3000/api/v1/login', options)
-      .then(res => res.json())
-      .then(userInfo => {
-        console.log("TOKEN_Login", userInfo.token)
-        console.log("Info_Login", userInfo)
-        localStorage.token = userInfo.token
-        localStorage.setItem("user", JSON.stringify({ ...userInfo }))
-        this.props.handleStateChange("token", userInfo.token)
-        this.props.handleStateChange("user", userInfo)
-        this.props.history.push('/home')
-      })
+    .then(res => res.json())
+    .then(userInfo => {
+      console.log("TOKEN_Login", userInfo.token)
+      console.log("Info_Login", userInfo)
+      localStorage.token = userInfo.token
+      localStorage.setItem("user", JSON.stringify({ ...userInfo }))
+      this.props.handleStateChange("token", userInfo.token)
+      this.props.handleStateChange("user", userInfo)
+      this.props.history.push('/home')
+    })
   }
 
   render() {
+
     return (
       <div className="auth-main" style={{ height: '5vh' }}>
         <Grid>
@@ -65,7 +67,6 @@ class Login extends Component {
                     className="auth-input-field"
                     onChange={this.handleChange}
                   />
-
                   <label className="label-input" >Password</label>
                   <Form.Input
                     fluid
@@ -77,18 +78,14 @@ class Login extends Component {
                     className="auth-input-field"
                     onChange={this.handleChange}
                   />
-
                   <Button style={{ background: "#7a6e6c" }} fluid size="huge">
                     Login
                   </Button>
-
                   <Message size="small">
-                    <Link 
-                      style={{ color: '#7a6e6c' }} to="/signup">
+                    <Link style={{ color: '#7a6e6c' }} to="/signup">
                       <strong>Not enrolled ?  Sign up now</strong>
                     </Link>
                   </Message>
-
                 </Form>
               </Segment>
             </div>
@@ -99,6 +96,4 @@ class Login extends Component {
   };
 };
 export default withRouter(Login);
-
-
 

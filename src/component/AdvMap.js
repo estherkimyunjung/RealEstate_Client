@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import keys from '../api/keys'
-
 import { Icon } from 'semantic-ui-react'
-import { Map, 
-  InfoWindow, 
-  Marker, 
-  GoogleApiWrapper, 
-  Circle } from 'google-maps-react';
+import {
+  Map,
+  InfoWindow,
+  Marker,
+  GoogleApiWrapper,
+  Circle
+} from 'google-maps-react'
 
 
 export class MapContainer extends Component {
@@ -14,14 +15,14 @@ export class MapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
-  };
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
-    });
+    })
 
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
@@ -33,11 +34,11 @@ export class MapContainer extends Component {
   };
 
   render() {
-    console.log("PM", this.props)
+    // console.log("PM", this.props)
     const lat = parseFloat(this.props.lat)
     const long = parseFloat(this.props.long)
     const coords = { lat: lat, lng: long };
-    console.log("PLEASE", lat)
+    // console.log("PLEASE", lat)
 
     return (
       <Map
@@ -63,13 +64,16 @@ export class MapContainer extends Component {
           onClick={this.onMarkerClick}
           title={'The marker`s title will appear as a tooltip.'}
           name={'Current location'}
-          position={{ lat: lat, lng: long }} 
+          position={{ lat: lat, lng: long }}
         />
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
           <div>
-            <h3><Icon name='building outline' />Home1800</h3>
+            <h3>
+              <Icon name='building outline' />
+              Home1800
+            </h3>
           </div>
         </InfoWindow>
       </Map>

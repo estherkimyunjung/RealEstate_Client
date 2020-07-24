@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
-import { Carousel } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Carousel } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './comon.css'
 
 
@@ -32,8 +31,8 @@ class SlideAdv extends Component {
           </Carousel>
         </Container>
       </div>
-    );
+    )
   }
 }
-export default SlideAdv;
+export default SlideAdv
 

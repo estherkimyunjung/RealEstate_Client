@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { 
   Button, 
   Form, 
@@ -9,7 +8,6 @@ import {
   Input, 
   Label, 
   Select } from 'semantic-ui-react'
-
 import '../auth/auth.css'
 
 
@@ -30,7 +28,9 @@ class Rebate extends React.Component {
           <br/>
           <Segment padded>
             <br/>
-            <Label attached='top'><h3 style={{textAlign:'right', lineHeight: '2em'}}>Rebate Request Here</h3></Label>
+            <Label attached='top'>
+              <h3 style={{textAlign:'right', lineHeight: '2em'}}>Rebate Request Here</h3>
+            </Label>
             <br/><br/><br/>
             <Form>
               <Form.Group unstackable widths={2}>
@@ -56,7 +56,6 @@ class Rebate extends React.Component {
                   search
                   searchInput={{ id: 'form-select-control-gender' }}
                 />
-
                 <Form.Field
                   id='form-input-control-error-email'
                   control={Input}
@@ -74,10 +73,8 @@ class Rebate extends React.Component {
           </Segment>
         </Container>
       </div>
-
-    );
+    )
   }
 }
-
-export default Rebate;
+export default Rebate
 

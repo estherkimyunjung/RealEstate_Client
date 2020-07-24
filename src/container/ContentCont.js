@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-
 import RealEstateInfo from '../component/RealEstateInfo';
 import PropertiesContainer from '../component/PropertiesContainer';
-
 import { 
   Container, 
   Grid, 
@@ -11,10 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './container.css'
 
 
-export default class ContentCont extends Component {
+class ContentCont extends Component {
 
   render() {
     console.log('properties', this.props.properties)
+
     return (
       <div>        
         {/* Real Estate Information and News */}
@@ -31,7 +30,8 @@ export default class ContentCont extends Component {
           </Segment>
         </Container>
       </div>
-    );
+    )
   }
 }
+export default ContentCont
 

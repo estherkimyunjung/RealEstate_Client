@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-
-import Appointments from '../component/Appointments';
-
+import React, { Component } from 'react'
+import Appointments from '../component/Appointments'
 import { 
   Grid, 
   Segment, 
@@ -11,7 +9,7 @@ import {
   Image } from 'semantic-ui-react'
 
 
-export default class Profile extends Component {
+class Profile extends Component {
   state = {
     edit: false,
     username: this.props.user.username,
@@ -40,6 +38,7 @@ export default class Profile extends Component {
   render() {
     const { username, firstname, lastname, email, role, avatar, zipcode } = this.props.user
     console.log("AV", avatar)
+
     return (
       <Grid doubling style={{ paddingTop: "20px", paddingLeft: "80px" }}>
         <Grid.Column width="4">
@@ -52,14 +51,17 @@ export default class Profile extends Component {
             <h4>Role: </h4><em><strong style={{ color: "#764b28" }}>{role}</strong></em>
             <h4>Zip Code: </h4><em><strong style={{ color: "#764b28" }}>{zipcode}</strong></em>
             <Divider />
-            <Button content="Edit User" style={{ background: "#ad9d89" }} onClick={() => this.handleChange("edit", !this.state.edit)} />
+            <Button 
+              content="Edit User" 
+              style={{ background: "#ad9d89" }} 
+              onClick={() => this.handleChange("edit", !this.state.edit)} 
+            />
           </Segment>
         </Grid.Column>
         <Grid.Column width="10">
           <Segment>
             {this.state.edit
-              ?
-              <div>
+              ? <div>
                 <Form>
                   <Form.Field>
                     <label><strong>User name</strong></label>
@@ -68,7 +70,8 @@ export default class Profile extends Component {
                       name="username" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={username} 
-                      style={{ color: "#764b28" }} />
+                      style={{ color: "#764b28" }} 
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label><strong>First name</strong></label>
@@ -77,7 +80,8 @@ export default class Profile extends Component {
                       name="firstname" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={firstname} 
-                      style={{ color: "#764b28" }}/>
+                      style={{ color: "#764b28" }}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label><strong>Last name</strong></label>
@@ -86,7 +90,8 @@ export default class Profile extends Component {
                       name="lastname" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={lastname} 
-                      style={{ color: "#764b28" }}/>
+                      style={{ color: "#764b28" }}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label><strong>Email</strong></label>
@@ -95,7 +100,8 @@ export default class Profile extends Component {
                       name="email" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={email} 
-                      style={{ color: "#764b28" }}/>
+                      style={{ color: "#764b28" }}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label><strong>Zipcode</strong></label>
@@ -105,7 +111,8 @@ export default class Profile extends Component {
                       type="number" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={zipcode} 
-                      style={{ color: "#764b28" }}/>
+                      style={{ color: "#764b28" }}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label><strong>Profile Picture / Avatar</strong></label>
@@ -115,21 +122,23 @@ export default class Profile extends Component {
                       type="text" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder='https://nofiredrills.com/wp-content/uploads/2016/10/myavatar.png' 
-                      style={{ color: "#764b28" }}/>
+                      style={{ color: "#764b28" }}
+                    />
                   </Form.Field>
                   <Button 
                     content="Cancel" 
                     onClick={() => this.handleChange("edit", !this.state.edit)} 
-                    style={{ background: "#ad9d89" }}/>
+                    style={{ background: "#ad9d89" }}
+                  />
                   <Button 
                     content="Submit" 
                     onClick={() => this.handleSubmit()} 
                     color="blue" 
-                    style={{ float: "right" }}/>
+                    style={{ float: "right" }}
+                  />
                 </Form>
               </div>
-              :
-              <div>
+              : <div>
                 <Appointments/>
               </div>
             }
@@ -139,4 +148,5 @@ export default class Profile extends Component {
     )
   }
 }
+export default Profile
 

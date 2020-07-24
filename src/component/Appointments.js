@@ -1,6 +1,14 @@
 import React from 'react'
-import { List, Image, Form, Input, TextArea, Button, Select } from 'semantic-ui-react'
+import { 
+  List, 
+  Image, 
+  Form, 
+  Input, 
+  TextArea, 
+  Button, 
+  Select } from 'semantic-ui-react'
 import '../auth/auth.css'
+
 
 const genderOptions = [
   { key: '1', text: 'Agent1', value: 'Agent1' },
@@ -16,20 +24,21 @@ const Appointments = (props) => (
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
         <List.Content>
           <List.Header>Snickerdoodle</List.Header>
-        An excellent companion
+          An excellent companion
       </List.Content>
       </List.Item>
       <List.Item>
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
         <List.Content>
-          <List.Header>Poodle</List.Header>A poodle, it's pretty basic
+          <List.Header>Poodle</List.Header>
+          A poodle, it's pretty basic
       </List.Content>
       </List.Item>
       <List.Item>
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
         <List.Content>
           <List.Header>Paulo</List.Header>
-        He's also a dog
+          He's also a dog
       </List.Content>
       </List.Item>
     </List>
@@ -80,8 +89,6 @@ const Appointments = (props) => (
       />
     </Form>
   </div>
-
 )
-
 export default Appointments
 

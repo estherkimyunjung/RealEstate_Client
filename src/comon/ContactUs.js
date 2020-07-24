@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
 import Map from './Map'
-
 import { 
   Container, 
   Grid, 
@@ -12,7 +10,9 @@ import {
 
   
 class ContactUs extends Component {
+
   render() {
+
     return (
       <Container className='contactUs'>
         <Segment placeholder>
@@ -37,7 +37,7 @@ class ContactUs extends Component {
           <Divider vertical><Icon name='map outline'/></Divider>
         </Segment>
       </Container>
-    );
+    )
   }
 }
 
@@ -58,6 +58,5 @@ const mapStateToProps = (state) => {
     sloganThree: state.company.descriptionThree
   }
 }
-
 export default connect(mapStateToProps)(ContactUs)
 

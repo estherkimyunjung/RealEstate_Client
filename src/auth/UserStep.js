@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import { 
   Form, 
   Header, 
@@ -10,10 +9,12 @@ import {
   Segment } from 'semantic-ui-react';
 import './auth.css'
 
+
 class userStep extends Component {
 
   render() {
     const { username, password, password_confirmation } = this.props.values
+
     return (
       <Grid className="auth-main" style={{ height: '5vh' }}>
         <div className="auth-content">
@@ -34,7 +35,6 @@ class userStep extends Component {
                   value={username}
                   onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
                 />
-
                 <label className="label-input" >Password</label>
                 <Form.Input
                   fluid
@@ -47,7 +47,6 @@ class userStep extends Component {
                   value={password}
                   onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
                 />
-
                 <label className="label-input" >Confirm Password</label>
                 <Form.Input
                   fluid
@@ -60,22 +59,21 @@ class userStep extends Component {
                   value={password_confirmation}
                   onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
                 />
-
                 <Button style={{ background: "#7a6e6c" }} fluid size="huge">
                   Save and Continue
                 </Button>
-
                 <Message size="small">
-                  <Link style={{ color: '#7a6e6c' }} to="/login"><strong>Already Registered?</strong></Link>
+                  <Link style={{ color: '#7a6e6c' }} to="/login">
+                    <strong>Already Registered?</strong>
+                  </Link>
                 </Message>
-
               </Form>
             </Segment>
           </div>
         </div>
       </Grid>
     );
-  }
-}
+  };
+};
 export default userStep
 

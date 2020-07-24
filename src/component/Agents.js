@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
 import { 
   Grid, 
   Segment, 
@@ -8,16 +7,16 @@ import {
   Header, 
   Icon, 
   Table, 
-  Container } from 'semantic-ui-react'
-  
-import 'bootstrap/dist/css/bootstrap.min.css';
+  Container } from 'semantic-ui-react'  
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-export default class Agents extends Component {
+class Agents extends Component {
 
   render() {
     console.log("Agents", this.props.agents)
     // let Auser = this.props.agents.map(a => console.log(a.user.firstname))
+
     return (
       <Container>
         <Segment>
@@ -58,4 +57,5 @@ export default class Agents extends Component {
     );
   }
 }
+export default Agents
 

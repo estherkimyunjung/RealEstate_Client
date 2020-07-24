@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-
 import UserStep from './UserStep';
 import InfoStep from './InfoStep';
-import ConfirmStep from './ConfirmStepppp';
-
+import ConfirmStep from './ConfirmStep';
 import './auth.css'
 
 
@@ -62,17 +60,19 @@ class Signup extends Component {
         zipcode: this.state.zipcode
       })
     }
+
     fetch('http://localhost:3000/api/v1/users', options)
-      .then(res => res.json())
-      .then(userInfo => {
-        this.props.history.push('/login')
-        // localStorage.token = userInfo.token
-      })
+    .then(res => res.json())
+    .then(userInfo => {
+      this.props.history.push('/login')
+      // localStorage.token = userInfo.token
+    })
   }
 
   render() {
     const {username, password, password_confirmation, firstname, lastname, email, role, avatar, zipcode} = this.state;
     const values = {username, password, password_confirmation, firstname, lastname, email, role, avatar, zipcode}
+
     switch (this.state.step) {
       case 1:
         return <UserStep
@@ -99,8 +99,8 @@ class Signup extends Component {
           handleChange={this.handleChange}
           values={values}
         />
-    }
-  }
-}
+    };
+  };
+};
 export default withRouter(Signup);
 

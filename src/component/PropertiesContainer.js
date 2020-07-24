@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
 import { 
   Grid, 
   Segment, 
@@ -8,11 +7,10 @@ import {
   Header, 
   Icon, 
   Table } from 'semantic-ui-react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-export default class PropertiesContainer extends Component {
+class PropertiesContainer extends Component {
 
   render() {
     console.log("Component", this.props.property)
@@ -26,8 +24,8 @@ export default class PropertiesContainer extends Component {
           <Divider horizontal>
             <Header as='h4'>
               <Icon name='bar chart' />
-                  Specifications
-                </Header>
+              Specifications
+            </Header>
           </Divider>
           <Table definition>
             <Table.Body>
@@ -51,7 +49,8 @@ export default class PropertiesContainer extends Component {
           </Table>
         </Segment>
       </Grid.Column>
-    );
+    )
   }
 }
+export default PropertiesContainer
 

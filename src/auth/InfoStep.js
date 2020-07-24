@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import { 
   Grid, 
   Segment, 
@@ -10,6 +9,7 @@ import {
   Message } from 'semantic-ui-react';
 import './auth.css';
 
+
 class InfoStep extends Component {
 
   render() {
@@ -18,6 +18,7 @@ class InfoStep extends Component {
       { key: 'a', text: 'Agent', value: 'Agent' }
     ]
     const { firstname, lastname, email, role, avatar, zipcode } = this.props.values
+
     return (
       <Grid className="auth-main" style={{ height: '5vh' }}>
         <div className="auth-content">
@@ -60,7 +61,6 @@ class InfoStep extends Component {
                   value={email}
                   onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
                 />
-
                 <label className="label-input" >ROLE</label>
                 <Form.Select
                   fluid
@@ -71,7 +71,6 @@ class InfoStep extends Component {
                   value={role}
                   onChange={(e, data) => this.props.handleChange(data.name, data.value)}
                 />
-
                 <label className="label-input" >AVATAR</label>
                 <Form.Input
                   fluid
@@ -83,7 +82,6 @@ class InfoStep extends Component {
                   value={avatar}
                   onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
                 />
-
                 <label className="label-input" >ZIP CODE</label>
                 <Form.Input
                   fluid
@@ -95,25 +93,24 @@ class InfoStep extends Component {
                   value={zipcode}
                   onChange={(e) => this.props.handleChange(e.target.name, e.target.value)}
                 />
-
                 <Button onClick={this.props.prevStep} style={{ background: "#7a6e6c", "marginTop": "20px" }} size="huge">
                   Previous
                 </Button>
                 <Button onClick={this.props.nextStep} style={{ background: "#7a6e6c", "marginTop": "20px" }} size="huge">
                   Save and Continue
                 </Button>
-
                 <Message size="small">
-                  <Link style={{ color: '#7a6e6c' }} to="/login"><strong>Already Have an Account?</strong></Link>
+                  <Link style={{ color: '#7a6e6c' }} to="/login">
+                    <strong>Already Have an Account?</strong>
+                  </Link>
                 </Message>
               </Form>
             </Segment>
           </div>
-
         </div>
       </Grid>
     );
-  }  
-}
+  };
+};
 export default InfoStep
 

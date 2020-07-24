@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class PropertyUpdate extends Component {
-  state = {  }
+
   render() { 
+
     return ( 
       <h1>PropertyUpdate</h1>
-     );
+     )
   }
 }
- 
 export default PropertyUpdate;
 
