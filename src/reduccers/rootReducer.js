@@ -12,13 +12,12 @@ const initialState = {
     descriptionOne: "Our company is focus on Family-like agent",
     descriptionTwo: "Proper service",
     descriptionThree: "Customer interests"
-    }
-    
+   }
 }
-
 
 export default function reducer(state = initialState, action){
   console.log("State", state)
   console.log("Action", action)
   return state
-} 
+}
+
