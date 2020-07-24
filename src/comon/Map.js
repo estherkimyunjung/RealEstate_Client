@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React from "react";
 import { compose, withProps } from "recompose";
-import keys from '../keys'
+import keys from '../api/keys'
 
 import {
   withScriptjs,

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import { 
   Grid, 
   Segment, 
@@ -8,11 +7,12 @@ import {
   Button, 
   Message } from 'semantic-ui-react';
 
+
 export default class ConfirmStep extends Component {
 
-    render() {
-        const { username, firstname, lastname, email, role, avatar, zipcode } = this.props.values
-        return (
+  render() {
+    const { username, firstname, lastname, email, role, avatar, zipcode } = this.props.values
+      return (
             <Grid className="auth-main" style={{ height: '5vh' }}>
                 <div className="auth-content">
                     <div className="auth-card">

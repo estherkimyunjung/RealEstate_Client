@@ -19,7 +19,7 @@ import { Loader, Dimmer, Segment } from 'semantic-ui-react'
 const USER_API = 'http://localhost:3000/api/v1/users'
 // const CLIENT_API = 'http://localhost:3000/api/v1/clients'
 const AGENT_API = 'http://localhost:3000/api/v1/agents'
-const COMPANY_API = 'http://localhost:3000/api/v1/companies'
+// const COMPANY_API = 'http://localhost:3000/api/v1/companies'
 const PROPERTY_API = 'http://localhost:3000/api/v1/properties'
 const APPOINTMENT_API = 'http://localhost:3000/api/v1/appointments'
 
@@ -41,7 +41,7 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchProperties()
     this.fetchAgents()
-    this.fetchCompany()
+    // this.fetchCompany()
   }
 
   fetchProperties = () => {
@@ -81,17 +81,17 @@ class App extends React.Component {
       })
   }
 
-  fetchCompany = () => {
-    fetch(COMPANY_API)
-      .then(res => res.json())
-      .then(companyInfo => {
-        console.log("companyInfo", companyInfo)
-        this.setState({
-          companyInfo: companyInfo,
-          isLoading: false
-        })
-      })
-  }
+  // fetchCompany = () => {
+  //   fetch(COMPANY_API)
+  //     .then(res => res.json())
+  //     .then(companyInfo => {
+  //       console.log("companyInfo", companyInfo)
+  //       this.setState({
+  //         companyInfo: companyInfo,
+  //         isLoading: false
+  //       })
+  //     })
+  // }
 
   fetchUser = () => {
     fetch(USER_API + `/${this.state.user.id}`, {

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import UserStep from './UserStep';
 import InfoStep from './InfoStep';
-import ConfirmStep from './ConfirmStep';
+import ConfirmStep from './ConfirmStepppp';
 
 import './auth.css'
 

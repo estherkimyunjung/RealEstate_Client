@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import keys from '../keys'
+import keys from '../api/keys'
 
 import { Icon } from 'semantic-ui-react'
 import { Map, 
