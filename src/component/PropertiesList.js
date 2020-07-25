@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropertyDetail from './PropertyDetail'
 import {
   Grid,
   Segment,
@@ -8,7 +9,6 @@ import {
   Icon,
   Table } from 'semantic-ui-react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import PropertyDetail from './PropertyDetail'
 
 
 class PropertiesList extends Component {

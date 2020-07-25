@@ -6,7 +6,6 @@ import {
   Container,
   Select,
   Input } from 'semantic-ui-react'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 

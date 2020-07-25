@@ -6,8 +6,7 @@ import {
   InfoWindow,
   Marker,
   GoogleApiWrapper,
-  Circle
-} from 'google-maps-react'
+  Circle } from 'google-maps-react'
 
 
 export class MapContainer extends Component {

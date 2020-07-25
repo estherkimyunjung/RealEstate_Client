@@ -5,7 +5,7 @@ import Login from './auth/Login'
 import SignUp from './auth/SignUp'
 import NavBar from './comon/NavBar'
 import SlideAdv from './comon/SliderAdv'
-import FooterCont from './container/FooterCont'
+import Footer from './comon/Footer'
 import AgentCont from './container/AgentCont'
 import ContactUs from './comon/ContactUs'
 import AboutUs from './comon/AboutUs';
@@ -253,7 +253,7 @@ class App extends React.Component {
               <Route path='/aboutUs' component={AboutUs} />
               <Route path='/contactUs' component={ContactUs} />
             </Switch>
-            <FooterCont />
+            <Footer />
           </BrowserRouter>
         }
       </div>

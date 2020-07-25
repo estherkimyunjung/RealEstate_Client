@@ -6,8 +6,7 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
-} from "react-google-maps"
+  Marker } from "react-google-maps"
 
 
 const MyMapComponent = compose(
