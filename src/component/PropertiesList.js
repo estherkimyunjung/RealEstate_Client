@@ -33,7 +33,7 @@ class PropertiesList extends Component {
             <Table.Body>
               <Table.Row>
                 <Table.Cell width={2}>Prices</Table.Cell>
-                <Table.Cell>{prices}</Table.Cell>
+                <Table.Cell>$ {prices}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Status</Table.Cell>
