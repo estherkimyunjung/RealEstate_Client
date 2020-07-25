@@ -1,6 +1,6 @@
 .ui.modal:not(.compact) {
   width: calc(100% - 370px) !important;
-  margin-top: 70px !important;
+  margin-top: 30px !important;
   margin-left: 190px !important;
   height: calc(100% - 80px) !important;
 }
@@ -18,7 +18,7 @@ height: auto;
 .button.propSort {
   display: inline-block;
   border-radius: 4px;
-  background-color: #7a6d6b;
+  background-color: #ac9e88;
   border: none;
   color: #ffff;
   text-align: center;
