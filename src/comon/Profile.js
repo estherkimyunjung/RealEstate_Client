@@ -37,7 +37,7 @@ class Profile extends Component {
 
   render() {
     const { username, firstname, lastname, email, role, avatar, zipcode } = this.props.user
-    console.log("AV", avatar)
+    // console.log("AV", avatar)
 
     return (
       <Grid doubling style={{ paddingTop: "20px", paddingLeft: "80px" }}>

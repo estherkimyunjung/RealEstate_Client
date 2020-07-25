@@ -8,7 +8,7 @@ import './comon.css'
 class SlideAdv extends Component {
 
   render() {
-    console.log('properties', this.props.properties)
+    // console.log('properties', this.props.properties)
     
     return (
       <div>
@@ -16,7 +16,7 @@ class SlideAdv extends Component {
         <Container className="sildeCon">
           <Carousel>
             {this.props.properties.map(p =>
-              <Carousel.Item>
+              <Carousel.Item key={p.id}>
                 <img
                   className="d-block w-100"
                   src={p.image}

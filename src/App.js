@@ -6,15 +6,14 @@ import SignUp from './auth/SignUp'
 import NavBar from './comon/NavBar'
 import SlideAdv from './comon/SliderAdv'
 import FooterCont from './container/FooterCont'
+import AgentCont from './container/AgentCont'
 import ContactUs from './comon/ContactUs'
 import AboutUs from './comon/AboutUs';
 import Profile from './comon/Profile'
 import ContentCont from './container/ContentCont';
-import Properties from './component/Properties';
-import Agents from './component/Agents';
+import PropertiesCont from './container/PropertiesCont';
 import Rebate from './component/Rebate'
-import { Loader, Dimmer, Segment } from 'semantic-ui-react'
-
+import { Button, Spinner } from 'react-bootstrap';
 
 const USER_API = 'http://localhost:3000/api/v1/users'
 // const CLIENT_API = 'http://localhost:3000/api/v1/clients'
@@ -33,65 +32,53 @@ class App extends React.Component {
     displayPro: [],
     agents: [],
     appointments: [],
-    companyInfo: [],
     eventName: 'main',
+    searchTerm: '',
     isLoading: true
   }
 
   componentDidMount() {
     this.fetchProperties()
     this.fetchAgents()
-    // this.fetchCompany()
+    this.fetchAppointments()
   }
 
   fetchProperties = () => {
     fetch(PROPERTY_API)
-      .then(res => res.json())
-      .then(properties => {
-        // console.log("properties", properties)
-        this.setState({
-          properties: properties,
-          displayPro: properties,
-          isLoading: false
-        })
+    .then(res => res.json())
+    .then(properties => {
+      // console.log("properties", properties)
+      this.setState({
+        properties: properties,
+        displayPro: properties,
+        isLoading: false
       })
+    })
   }
 
   fetchAgents = () => {
     fetch(AGENT_API)
-      .then(res => res.json())
-      .then(agents => {
-        console.log("agents", agents)
-        this.setState({
-          agents: agents,
-          isLoading: false
-        })
+    .then(res => res.json())
+    .then(agents => {
+      // console.log("agents", agents)
+      this.setState({
+        agents: agents,
+        isLoading: false
       })
+    })
   }
 
   fetchAppointments = () => {
     fetch(APPOINTMENT_API)
-      .then(res => res.json())
-      .then(appointments => {
-        console.log("appointments", appointments)
-        this.setState({
-          appointments: appointments,
-          isLoading: false
-        })
+    .then(res => res.json())
+    .then(appointments => {
+      console.log("appointments", appointments)
+      this.setState({
+        appointments: appointments,
+        isLoading: false
       })
+    })
   }
-
-  // fetchCompany = () => {
-  //   fetch(COMPANY_API)
-  //     .then(res => res.json())
-  //     .then(companyInfo => {
-  //       console.log("companyInfo", companyInfo)
-  //       this.setState({
-  //         companyInfo: companyInfo,
-  //         isLoading: false
-  //       })
-  //     })
-  // }
 
   fetchUser = () => {
     fetch(USER_API + `/${this.state.user.id}`, {
@@ -100,13 +87,13 @@ class App extends React.Component {
         Authorization: `Bearer ${this.state.token}`
       }
     })
-      .then(res => res.json())
-      .then(userInfo => {
-        localStorage.setItem('user', JSON.stringify({ ...userInfo, token: this.state.token }))
-        this.setState({
-          user: JSON.parse(localStorage.getItem('user'))
-        })
+    .then(res => res.json())
+    .then(userInfo => {
+      localStorage.setItem('user', JSON.stringify({ ...userInfo, token: this.state.token }))
+      this.setState({
+        user: JSON.parse(localStorage.getItem('user'))
       })
+    })
   }
 
   editUserInfo = (user) => {
@@ -128,11 +115,12 @@ class App extends React.Component {
         zipcode: user.zipcode
       })
     }
+
     fetch(USER_API + `/${user.id}`, option)
-      .then(res => res.json())
-      .then(userInfo => {
-        this.fetchUser()
-      })
+    .then(res => res.json())
+    .then(userInfo => {
+      this.fetchUser()
+    })
   }
 
   handleStateChanges = (key, value) => {
@@ -141,32 +129,84 @@ class App extends React.Component {
     })
   }
 
+  sortByPriceHL = () => {
+    this.setState({
+      displayPro: this.state.displayPro.sort((a,b) => parseInt(a.prices) - parseInt(b.prices))
+    })
+  }
+
+  sortByPriceLH = () => {
+    this.setState({
+      displayPro: this.state.displayPro.sort((a,b) => parseInt(b.prices) - parseInt(a.prices))
+    })
+  }
+
+  sortBybuilt = () => {
+    this.setState({
+      displayPro: this.state.displayPro.sort((a,b) => b.built - a.built)
+    })
+  }
+
+  sortByBeds = () => {
+    this.setState({
+      displayPro: this.state.displayPro.sort((a,b) => a.beds - b.beds)
+    })
+  }
+
+  sortBySqft = () => {
+    this.setState({
+      displayPro: this.state.displayPro.sort((a,b) => a.sqft - b.sqft)
+    })
+  }
+
+  sortByZipcode = () => {
+    this.setState({
+      displayPro: this.state.displayPro.sort((a,b) => a.zipcode - b.zipcode)
+    })
+  }
+
+  handleSearch = event => {
+    this.setState({searchTerm: (event.target.value).toUpperCase()})
+  }
 
   render() {
 
+    const searchProperty = this.state.properties.filter(property => property.address.includes(this.state.searchTerm))
     console.log("EST", this.state.properties)
     return (
       <div className="App">
         {this.state.isLoading
-          ? <Segment>
-            <Dimmer active>
-              <Loader size='big'>Loading</Loader>
-            </Dimmer>
-          </Segment>
+          ? <Button variant="primary" disabled>
+          <Spinner
+            as="span"
+            animation="grow"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+          Loading...
+        </Button>
           : <BrowserRouter>
 
             {/* static components - Header: TopBar,NavBar / SliderAdv / Footer: AboutUs*/}
-            <NavBar handleStateChange={this.handleStateChanges} properties={this.state.properties} />
+            <NavBar 
+              handleStateChange={this.handleStateChanges} 
+              properties={this.state.properties}
+            />
 
             {/* Slide All Properties Advertising Images */}
-            <SlideAdv handleStateChange={this.handleStateChanges} properties={this.state.properties} />
+            <SlideAdv 
+              handleStateChange={this.handleStateChanges} 
+              properties={this.state.properties} 
+            />
 
             {/* Condition Rendering instead of Contentcont */}
             <Switch>
               <Route path='/login' render={(routerProps) =>
                 <Login
                   user={this.state.user}
-                  handleStateChange={this.handleStateChanges} />} />
+                  handleStateChange={this.handleStateChanges} />}
+                />
               <Route path='/signup' component={SignUp} />
               <Route exact path="/profile" component={() =>
                 this.state.token
@@ -174,50 +214,34 @@ class App extends React.Component {
                     editUserInfo={this.editUserInfo}
                     user={this.state.user}
                     appointments={this.state.appointments} />
-                  : <Redirect to='/login' />} />
+                  : <Redirect to='/login' />} 
+                  />
               <Route exact path='/home' render={(routerProps) =>
                 <ContentCont
-                  properties={this.state.properties}
-                  handleStateChange={this.handleStateChanges} />} />
+                  properties={this.state.properties} />} 
+                />
               <Route exact path='/property' render={(routerProps) =>
-                <Properties
-                  properties={this.state.properties}
-                  handleStateChange={this.handleStateChanges} />} />
+                <PropertiesCont
+                  properties={this.state.displayPro}
+                  sortByZipcode={this.sortByZipcode}
+                  onChange={this.handleSearch}
+                  properties={searchProperty}
+                  handleStateChange={this.handleStateChanges} />} 
+                />
               <Route exact path='/agent' render={(routerProps) =>
-                <Agents
+                <AgentCont 
                   agents={this.state.agents}
-                  handleStateChange={this.handleStateChanges} />} />
+                  handleStateChange={this.handleStateChanges} />}                 
+                />
               <Route exact path='/rebate' render={(routerProps) =>
                 <Rebate
                   user={this.state.user}
                   agents={this.state.agents}
                   appointments={this.state.appointments}
-                  handleStateChange={this.handleStateChanges} />} />
-              <Route exact path='/contactUs' render={(routerProps) =>
-                <ContactUs
-                  companyInfo={this.state.companyInfo}
-                  handleStateChange={this.handleStateChanges} />} />
-              <Route exact path='/aboutUs' render={(routerProps) =>
-                <AboutUs
-                  companyInfo={this.state.companyInfo}
-                  handleStateChange={this.handleStateChanges} />} />
-
-
-              {/* component about us / contact us */}
-              {/* <Route exact path='/houses' render={() => <HouseDisplay houses={this.state.houses}/> with props*/}
-              {/* <Route path='/houses' render={(routerProps) => <HouseDisplay {...routerProps}houses={this.state.houses}/> with routerProps and props*/}
-              {/* <Route path='/houses/:id' component={HouseDiplay}/> without props but info component currnet house id is: {this.props.match.params.id}*/}
-              {/* <Route path='/houses/new' render={(routerProps) => <HouseForm {...routerProps} addHouse={this.addHouse}/> */}
-              {/* <Link to='/home'>Go to Home</Link> import {Link} from react-router-dom redireact the rout*/}
-              {/* handleSubmit = () => {this.props.history.push('/house')} redirect after submit*/}
-              {/* <Link to='/home'>Go to Home</Link> */}
-              {/* <Route path='/profile' component={Profile}/> */}
-              {/* <Route exact path="/dashboard" component={() => 
-                this.state.token 
-                ? <Dashboard/> 
-                : <Redirect to='/login'/>} />
-              <Route exact path="/about" component={About}/> */}
-
+                  handleStateChange={this.handleStateChanges} />} 
+                />
+              <Route path='/aboutUs' component={AboutUs} />
+              <Route path='/contactUs' component={ContactUs} />
             </Switch>
             <FooterCont />
           </BrowserRouter>
