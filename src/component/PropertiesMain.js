@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropertyDetail from './PropertyDetail'
 import { 
   Grid, 
   Segment, 
@@ -10,7 +11,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
-class PropertiesContainer extends Component {
+class PropertiesMain extends Component {
 
   render() {
     console.log("Component", this.props.property)
@@ -47,10 +48,12 @@ class PropertiesContainer extends Component {
               </Table.Row>
             </Table.Body>
           </Table>
+        {/*detail option*/}
+        < PropertyDetail property={this.props.property}/>
         </Segment>
       </Grid.Column>
     )
   }
 }
-export default PropertiesContainer
+export default PropertiesMain
 

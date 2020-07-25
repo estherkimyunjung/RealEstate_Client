@@ -45,8 +45,8 @@ export class MapContainer extends Component {
         onClick={this.onMapClicked}
         initialCenter={coords}
         google={this.props.google}
-        style={{ width: 500, height: 350, position: 'relative' }}
-        zoom={15}
+        style={{ width: '75%', height: '45%', position: 'flex', marginLeft:'20px' }}
+        zoom={14}
       >
         <Circle
           radius={350}
@@ -70,10 +70,10 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
           <div>
-            <h3>
-              <Icon name='building outline' />
-              Home1800
-            </h3>
+            <h5>
+              <Icon name='home' />
+              {this.props.address}
+            </h5>
           </div>
         </InfoWindow>
       </Map>

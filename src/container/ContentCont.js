@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RealEstateInfo from '../component/RealEstateInfo';
-import PropertiesContainer from '../component/PropertiesContainer';
+import PropertiesMain from '../component/PropertiesMain';
 import { 
   Container, 
   Grid, 
@@ -12,7 +12,7 @@ import './container.css'
 class ContentCont extends Component {
 
   render() {
-    console.log('properties', this.props.properties)
+    console.log('properties', this.props.displayPro)
 
     return (
       <div>        
@@ -24,7 +24,7 @@ class ContentCont extends Component {
           <Segment>
             <Grid stackable columns={4}>
               {this.props.properties.slice(0, 4).map(p =>
-                <PropertiesContainer property={p} />
+                <PropertiesMain property={p} key={p.id}/>
               )}
             </Grid>
           </Segment>

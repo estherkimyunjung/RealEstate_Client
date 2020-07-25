@@ -87,8 +87,7 @@ class NavBar extends Component {
           {/* Home Button with welcome Message */}
           <Menu.Item>
             <Link to="/home" style={{ color: 'black', textDecoration: 'none' }}>
-              <Icon name='building outline' />
-              Welcome to Home 1800
+              <Icon name='building outline' /> Welcome to Home 1800
             </Link>
           </Menu.Item>
 
@@ -102,8 +101,7 @@ class NavBar extends Component {
             active={activeItem === 'property'}
             onClick={this.handleItemClick}>
             <Link to="/property" style={{ color: 'black', textDecoration: 'none' }}>
-              <Icon name='building' />
-              Property
+              <Icon name='building' /> Property
             </Link>
           </Menu.Item>
 
@@ -113,8 +111,7 @@ class NavBar extends Component {
             active={activeItem === 'agent'}
             onClick={this.handleItemClick}>
             <Link to="/agent" style={{ color: 'black', textDecoration: 'none' }}>
-              <Icon name='handshake' />
-              Agent
+              <Icon name='handshake' /> Agent
             </Link>
           </Menu.Item>
 
@@ -124,8 +121,7 @@ class NavBar extends Component {
             active={activeItem === 'rebate'}
             onClick={this.handleItemClick}>
             <Link to="/rebate" style={{ color: 'black', textDecoration: 'none' }}>
-              <Icon name='money' />
-              Rebate
+              <Icon name='money' /> Rebate
             </Link>
           </Menu.Item>
 
@@ -135,8 +131,7 @@ class NavBar extends Component {
             active={activeItem === 'aboutUs'}
             onClick={this.handleItemClick}>
             <Link to="/aboutUs" style={{ color: 'black', textDecoration: 'none' }}>
-              <Icon name='group' />
-              About Us
+              <Icon name='group' /> About Us
             </Link>
           </Menu.Item>
 
@@ -146,8 +141,7 @@ class NavBar extends Component {
             active={activeItem === 'contactUs'}
             onClick={this.handleItemClick}>
             <Link to="/contactUs" style={{ color: 'black', textDecoration: 'none' }}>
-              <Icon name='plug' />
-              Contact Us
+              <Icon name='plug' /> Contact Us
             </Link>
           </Menu.Item>
         </Menu>
