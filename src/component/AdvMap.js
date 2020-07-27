@@ -33,7 +33,7 @@ export class MapContainer extends Component {
   };
 
   render() {
-    // console.log("PM", this.props)
+    console.log("PM", this.props)
     const lat = parseFloat(this.props.lat)
     const long = parseFloat(this.props.long)
     const coords = { lat: lat, lng: long };
@@ -69,9 +69,12 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
           <div>
-            <h5>
+            <h5 >
               <Icon name='home' />
-              {this.props.address}
+              {this.props.address}<br/>
+              <span style = {{marginLeft: '80px'}}>{this.props.schooldist.split(",")[0]}</span><br/>
+              <span style = {{marginLeft: '80px'}}>{this.props.schooldist.split(",")[1]}</span><br/>
+              <span style = {{marginLeft: '80px'}}>{this.props.schooldist.split(",")[2]}</span><br/>
             </h5>
           </div>
         </InfoWindow>

@@ -27,7 +27,7 @@ class PropertyDetail extends Component {
 
   render() {
     // console.log("DETAIL", this.props.property)
-    const { image, status, category, address, latitude, longitude, prices, beds, baths, sqft, built } = this.props.property
+    const { image, status, category, schooldist, address, latitude, longitude, prices, beds, baths, sqft, built } = this.props.property
 
     const agent = this.props.property.agent.user
     // console.log("NAME", agent.firstname)
@@ -82,7 +82,7 @@ class PropertyDetail extends Component {
             </Table>
           </Modal.Description>
         </Modal.Content>
-        <AdvMap className='property-map' lat={latitude} long={longitude} address={address}/>
+        <AdvMap className='property-map' lat={latitude} long={longitude} address={address} schooldist={schooldist}/>
         <Modal.Actions>
           <Button onClick={this.handleClick} primary>
             Agent Information <Icon name='chevron down' />
