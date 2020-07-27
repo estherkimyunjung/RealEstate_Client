@@ -70,14 +70,14 @@ class App extends React.Component {
 
   fetchAppointments = () => {
     fetch(APPOINTMENT_API)
-      .then(res => res.json())
-      .then(appointments => {
-        console.log("appointments", appointments)
-        this.setState({
-          appointments: appointments,
-          isLoading: false
-        })
+    .then(res => res.json())
+    .then(appointments => {
+      console.log("appointments", appointments)
+      this.setState({
+        appointments: appointments,
+        isLoading: false
       })
+    })
   }
 
   fetchUser = () => {
@@ -131,7 +131,6 @@ class App extends React.Component {
 
   sortProperties = (value) => {
     // console.log("SORT", value)
-
     let sorted = [...this.state.displayPro]
 
     switch (value) {
@@ -167,12 +166,6 @@ class App extends React.Component {
         return sorted
     }
   }
-
-  // sortByZipcode = () => {
-  //   this.setState({
-  //     displayPro: this.state.displayPro.sort((a,b) => a.zipcode - b.zipcode)
-  //   })
-  // }
 
   handleSearch = event => {
     this.setState({ searchTerm: (event.target.value).toUpperCase() })

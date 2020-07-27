@@ -125,7 +125,12 @@ export default function Appointments(props) {
             shrink: true,
           }}
         />
-        <TextareaAutosize className={classes.textareaAutosize} aria-label="minimum height" rowsMin={4} placeholder="Message : max character 200" />
+        <TextareaAutosize 
+          className={classes.textareaAutosize} 
+          aria-label="minimum height" 
+          rowsMin={2} 
+          placeholder="Message : max character 200"
+        />
         <Button
           variant="contained"
           color="primary"
@@ -136,25 +141,26 @@ export default function Appointments(props) {
       </Button>
       </form>
 
-      <List className={classes.root} style={{ marginTop: '20px' }}>
+      <List className={classes.root} style={{ marginTop: '10px' }}>
         {appolist.map(al =>
           <ListItem alignItems="flex-start" style={{ width: '700px' }}>
             <ListItemAvatar>
               <Avatar alt="Remy Sharp" src={al.agent.user.avatar} />
             </ListItemAvatar>
             <ListItemText fontSize='50px'
-              primary={'Agent : ' + al.agent.user.firstname + ' ' + al.agent.user.lastname}
+              primary={'Agent : ' + al.agent.user.firstname + ' ' + al.agent.user.lastname + '(Appointment : ' + moment(al.date_time).format("dddd, MMMM D, YYYY h:mm") + ')'}
               secondary={
                 <React.Fragment>
+                  <br/>
+                  <span>{'  ' + al.message + ' '}</span>
                   <Typography
                     component="span"
                     variant="body2"
                     className={classes.inline}
                     color="textPrimary"
                   >
-                    {moment(al.date_time).format("dddd, MMMM D, YYYY")}
+                    - {moment(al.created_at).format("dddd, MMMM D, YYYY")}
                   </Typography>
-                  {" — I'll be in your neighborhood doing errands this…"}
                 </React.Fragment>
               }
             />

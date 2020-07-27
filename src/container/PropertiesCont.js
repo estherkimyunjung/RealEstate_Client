@@ -30,11 +30,15 @@ class PropertiesCont extends Component {
             <Grid columns={3} divided style={{ marginLeft: '50px' }}>
               <Grid.Row >
                 <Grid.Column width={11}>
-                  <span style={{color: '#868161', fontWeight: 'Bold'}}>Search by Stree Address or City or Zipcode</span>
+                  <span style={{color: '#868161', fontWeight: 'Bold', fontSize: '17px'}}>
+                    Search by Stree Address or City or Zipcode
+                  </span>
                   <Input onChange={this.props.onChange}fluid icon='search' placeholder='Search...' />
                 </Grid.Column>
                 <Grid.Column width={4}>
-                  <span style={{color: '#868161', fontWeight: 'Bold'}}>Sort by options</span>
+                  <span style={{color: '#868161', fontWeight: 'Bold', fontSize: '17px'}}>
+                    Sort by options
+                  </span>
                   <Select 
                     style={{ float: 'right' }} 
                     placeholder='Find Home for You' 
