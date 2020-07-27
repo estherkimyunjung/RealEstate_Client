@@ -44,7 +44,7 @@ export class MapContainer extends Component {
         onClick={this.onMapClicked}
         initialCenter={coords}
         google={this.props.google}
-        style={{ width: '75%', height: '45%', position: 'flex', marginLeft:'20px' }}
+        style={{ width: '74%', height: '43%', position: 'flex', marginLeft:'20px' }}
         zoom={14}
       >
         <Circle

@@ -45,7 +45,7 @@ class PropertyDetail extends Component {
           <Modal.Description>
             <Header>Property Description</Header>
             <Table definition>
-              <Table.Body>
+              <Table.Body style={{fontSize: '13px'}}>
                 <Table.Row>
                   <Table.Cell width={2}>Prices</Table.Cell>
                   <Table.Cell>${prices}</Table.Cell>

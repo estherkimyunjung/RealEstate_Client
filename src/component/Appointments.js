@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
   textareaAutosize: {
     marginTop: '10px',
     width: '800px',
+    paddingLeft: '10px',
     fontSize: '20px'
   },
   button: {
@@ -88,7 +89,7 @@ export default function Appointments(props) {
   console.log("AgAp", agentAppo)
   return (
     <div>
-      <h1>Appointment Informations</h1>
+      <h1 style={{marginBottom: '40px', paddingLeft: '20px'}}>Appointment Informations</h1>
       <form className={classes.container} noValidate>
         <TextField
           id="outlined-read-only-input"
@@ -118,7 +119,7 @@ export default function Appointments(props) {
           id="datetime-local"
           label="Next appointment"
           type="datetime-local"
-          defaultValue="2017-05-24T10:30"
+          defaultValue="2020-07-27T10:30"
           className={classes.textField}
           InputLabelProps={{
             shrink: true,

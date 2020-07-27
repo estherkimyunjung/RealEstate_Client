@@ -1,17 +1,17 @@
 .ui.modal:not(.compact) {
-  width: calc(100% - 370px) !important;
-  margin-top: 30px !important;
-  margin-left: 190px !important;
-  height: calc(100% - 80px) !important;
+  width: calc(100% - 750px) !important;
+  margin-top: 20px !important;
+  margin-left: 370px !important;
+  height: calc(100% - 60px) !important;
 }
 
 div.image.content {
-  margin-top: 10px !important;
-  margin-bottom: 10px !important;
+  margin-top: 5px !important;
+  margin-bottom: 3px !important;
 }
 
 .ui.medium.image,img {
-width: 800px;
+width: 980px;
 height: auto;
 }
 
