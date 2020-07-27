@@ -138,8 +138,8 @@ class Profile extends Component {
                   />
                 </Form>
               </div>
-              : <div>
-                <Appointments/>
+              : <div style={{minHeight: '625px'}}>
+                <Appointments appointments={this.props.appointments} user={this.state}/>
               </div>
             }
           </Segment>
