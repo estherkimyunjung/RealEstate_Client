@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-
+import moment from 'moment';
 import Login from './auth/Login'
 import SignUp from './auth/SignUp'
 import NavBar from './comon/NavBar'
@@ -72,12 +72,52 @@ class App extends React.Component {
     fetch(APPOINTMENT_API)
     .then(res => res.json())
     .then(appointments => {
-      console.log("appointments", appointments)
+      // console.log("appointments", appointments)
       this.setState({
         appointments: appointments,
         isLoading: false
       })
     })
+  }
+
+  addAppointment = (message, Finagent, date_time, e) => {
+    // console.log("ADDAPPOE", e)
+    // console.log("ADDMes", message)
+    console.log("ADDAgent", Finagent)
+    // console.log("ADDDate", date_time)
+    // debugger
+    e.preventDefault()
+    
+    // const findAgent = (Finagent) => {
+    //  return this.state.agents.find( agent => (agent.user.firstname +' '+ agent.user.lastname === Finagent))
+    // }
+    // debugger
+// console.log("FA",findAgent(Finagent))
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json",
+        Authorization: `Bearer ${this.state.token}`
+      },
+      body: JSON.stringify({
+        date_time: moment(date_time).format("dddd, MMMM D, YYYY h:mm"),
+        message: message,
+        client_id: this.state.user.client.id,
+        agent_id: parseInt(Finagent.split(' ')[0])
+      })
+    }
+    
+    fetch(APPOINTMENT_API , options)
+    .then(res => res.json())
+    .then(Newappointment => {
+      console.log("Newappointment", Newappointment)
+      this.setState({
+        appointments: [...this.state.appointments, Newappointment]
+      })
+      this.fetchAppointments()
+    })
+    e.target.reset()
   }
 
   fetchUser = () => {
@@ -175,7 +215,7 @@ class App extends React.Component {
 
     const searchProperty = this.state.displayPro.filter(property => property.address.includes(this.state.searchTerm))
 
-    console.log("EST", this.state.properties)
+    // console.log("EST", this.state.properties)
     return (
       <div className="App">
         {this.state.isLoading
@@ -214,8 +254,10 @@ class App extends React.Component {
               <Route exact path="/profile" component={() =>
                 this.state.token
                   ? <Profile
+                  addAppointment={this.addAppointment}
                     editUserInfo={this.editUserInfo}
                     user={this.state.user}
+                    agents={this.state.agents}
                     appointments={this.state.appointments} />
                   : <Redirect to='/login' />}
               />

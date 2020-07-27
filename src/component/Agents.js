@@ -14,7 +14,7 @@ class Agents extends Component {
 
 
   render() {
-    console.log("Agents", this.props.agents)
+    // console.log("Agents", this.props.agents)
     // let Auser = this.props.agents.map(a => a.user)
     // console.log("AU", Auser[0].firstname)
     const {firstname, lastname, email, avatar, zipcode} = this.props.agent.user
@@ -35,7 +35,7 @@ class Agents extends Component {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>E-mail</Table.Cell>
-                <Table.Cell>{email}</Table.Cell>
+                <Table.Cell fontSize='10px'>{email}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Location</Table.Cell>
