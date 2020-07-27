@@ -23,7 +23,7 @@ class InfoStep extends Component {
       <Grid className="auth-main" style={{ height: '5vh' }}>
         <div className="auth-content">
           <div className="auth-card">
-            <Segment stacked>
+            <Segment stacked >
               <Header as="h3" color="black">
                 Personal Details
               </Header>

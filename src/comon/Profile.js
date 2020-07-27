@@ -65,15 +65,15 @@ class Profile extends Component {
           <Segment>
             {this.state.edit
               ? <div>
-                <Form>
+                <Form style={{ height: '62vh' }}>
                   <Form.Field>
-                    <label><strong>User name</strong></label>
+                    <label style={{ marginTop: '15px'}}><strong>User name</strong></label>
                     <input 
                       value={this.state.username} 
                       name="username" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={username} 
-                      style={{ color: "#764b28" }} 
+                      style={{ color: "#764b28", marginBottom:'15px'}} 
                     />
                   </Form.Field>
                   <Form.Field>
@@ -83,7 +83,7 @@ class Profile extends Component {
                       name="firstname" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={firstname} 
-                      style={{ color: "#764b28" }}
+                      style={{ color: "#764b28", marginBottom:'10px'}}
                     />
                   </Form.Field>
                   <Form.Field>
@@ -93,7 +93,7 @@ class Profile extends Component {
                       name="lastname" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={lastname} 
-                      style={{ color: "#764b28" }}
+                      style={{ color: "#764b28", marginBottom:'15px' }}
                     />
                   </Form.Field>
                   <Form.Field>
@@ -103,7 +103,7 @@ class Profile extends Component {
                       name="email" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={email} 
-                      style={{ color: "#764b28" }}
+                      style={{ color: "#764b28", marginBottom:'15px' }}
                     />
                   </Form.Field>
                   <Form.Field>
@@ -114,7 +114,7 @@ class Profile extends Component {
                       type="number" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder={zipcode} 
-                      style={{ color: "#764b28" }}
+                      style={{ color: "#764b28", marginBottom:'15px' }}
                     />
                   </Form.Field>
                   <Form.Field>
@@ -125,7 +125,7 @@ class Profile extends Component {
                       type="text" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder='https://nofiredrills.com/wp-content/uploads/2016/10/myavatar.png' 
-                      style={{ color: "#764b28" }}
+                      style={{ color: "#764b28", marginBottom:'25px' }}
                     />
                   </Form.Field>
                   <Button 
