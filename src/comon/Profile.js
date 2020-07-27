@@ -7,7 +7,6 @@ import {
   Form, 
   Divider, 
   Image } from 'semantic-ui-react'
-import { Container } from '@material-ui/core'
 
 
 class Profile extends Component {

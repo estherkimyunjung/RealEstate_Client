@@ -1,4 +1,3 @@
-
 import React from 'react';
 import moment from 'moment'
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,7 +16,6 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -75,7 +73,7 @@ export default function Appointments(props) {
   const allAgent = props.appointments.map(a => a.agent.user.firstname)
   console.log("ALL", [...new Set(allAgent)])
 
-  const [agent, setAgent] = React.useState('');
+  const [agent = [...new Set(allAgent)], setAgent] = React.useState('');
   console.log("AAA", agent)
 
   const handleChange = (event) => {
@@ -84,13 +82,12 @@ export default function Appointments(props) {
   };
 
   const appolist = props.appointments.filter(ap => ap.client_id === props.user.id)
-  const dateAppo = appolist.map(li => li.date_time)
   const agentAppo = appolist.map(li => li.agent.user.firstname)
   console.log("AgAp", agentAppo)
   return (
     <div>
       <h1 style={{marginBottom: '40px', paddingLeft: '20px'}}>Appointment Informations</h1>
-      <form className={classes.container} noValidate>
+      <form className={classes.container} noValidate onSubmit={(e) => {this.props.addAppointment(e,agent)}}>
         <TextField
           id="outlined-read-only-input"
           label="Read Only"
