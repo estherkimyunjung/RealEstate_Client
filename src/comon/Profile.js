@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Appointments from '../component/Appointments'
+import Appo from '../component/Appo'
 import { 
   Grid, 
   Segment, 
@@ -138,8 +139,9 @@ class Profile extends Component {
                   />
                 </Form>
               </div>
-              : <div>
-                <Appointments/>
+              : <div style={{minHeight: '625px'}}>
+                <Appointments appointments={this.props.appointments} user={this.state}/>
+                {/* <Appo/> */}
               </div>
             }
           </Segment>

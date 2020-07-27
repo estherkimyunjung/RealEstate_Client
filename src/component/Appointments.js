@@ -1,94 +1,168 @@
-import React from 'react'
-import { 
-  List, 
-  Image, 
-  Form, 
-  Input, 
-  TextArea, 
-  Button, 
-  Select } from 'semantic-ui-react'
-import '../auth/auth.css'
+
+import React from 'react';
+import moment from 'moment'
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
+import SendIcon from '@material-ui/icons/Send';
 
 
-const genderOptions = [
-  { key: '1', text: 'Agent1', value: 'Agent1' },
-  { key: '2', text: 'Agent2', value: 'Agent2' },
-  { key: '3', text: 'Agent3', value: 'Agent3' },
-]
 
-const Appointments = (props) => (
-  <div>
-    <h1>Appointment Informations</h1>
-    <List celled>
-      <List.Item>
-        <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
-        <List.Content>
-          <List.Header>Snickerdoodle</List.Header>
-          An excellent companion
-      </List.Content>
-      </List.Item>
-      <List.Item>
-        <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
-        <List.Content>
-          <List.Header>Poodle</List.Header>
-          A poodle, it's pretty basic
-      </List.Content>
-      </List.Item>
-      <List.Item>
-        <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
-        <List.Content>
-          <List.Header>Paulo</List.Header>
-          He's also a dog
-      </List.Content>
-      </List.Item>
-    </List>
-    <Form>
-      <Form.Group widths='equal'>
-        <Form.Field
-          id='form-input-control-first-name'
-          control={Input}
-          label='First name'
-          placeholder='First name'
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    marginTop: '20px',
+  },
+  textField: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    width: 200,
+    fontSize: '20px'
+
+  },
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+
+    inline: {
+      display: 'inline',
+    },
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+    marginTop: 0,
+    marginLeft: '50px',
+    marginRight: '30px'
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(3),
+  },
+  textareaAutosize: {
+    marginTop: '10px',
+    width: '600px',
+    fontSize: '20px'
+  },
+  button: {
+    margin: theme.spacing(1),
+    marginTop: 15,
+    backgroundColor: '#ac9e88',
+  },
+}));
+
+export default function Appointments(props) {
+
+  const classes = useStyles();
+
+  const allAgent = props.appointments.map(a => a.agent.user.firstname)
+  console.log("ALL", [...new Set(allAgent)])
+
+  const [agent, setAgent] = React.useState('');
+  console.log("AAA", agent)
+
+  const handleChange = (event) => {
+    setAgent(event.target.value);
+    console.log("EVE", event)
+  };
+
+  const appolist = props.appointments.filter(ap => ap.client_id === props.user.id)
+  const dateAppo = appolist.map(li => li.date_time)
+  const agentAppo = appolist.map(li => li.agent.user.firstname)
+  console.log("AgAp", agentAppo)
+  return (
+    <div>
+      <h1>Appointment Informations</h1>
+      <form className={classes.container} noValidate>
+        <TextField
+          id="outlined-read-only-input"
+          label="Read Only"
+          defaultValue={props.user.firstname + ' ' + props.user.lastname}
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
         />
-        <Form.Field
-          id='form-input-control-last-name'
-          control={Input}
-          label='Last name'
-          placeholder='Last name'
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="demo-simple-select-outlined-label">Find Agent</InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            value={agent}
+            onChange={handleChange}
+            label="Agent"
+          >
+            <MenuItem value="">
+              <em>Select Option</em>
+            </MenuItem>
+            <MenuItem value={agent}>{agent}</MenuItem>
+          </Select>
+        </FormControl>
+        <TextField
+          id="datetime-local"
+          label="Next appointment"
+          type="datetime-local"
+          defaultValue="2017-05-24T10:30"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
-        <Form.Field
-          control={Select}
-          options={genderOptions}
-          label={{ children: 'Agent', htmlFor: 'form-select-control-gender' }}
-          placeholder='Agent'
-          search
-          searchInput={{ id: 'form-select-control-gender' }}
-        />
-      </Form.Group>
-      <Form.Field
-        id='form-textarea-control-opinion'
-        control={TextArea}
-        label='Opinion'
-        placeholder='Opinion'
-      />
-      <Form.Field
-        id='form-input-control-error-email'
-        control={Input}
-        label='Email'
-        placeholder='joe@schmoe.com'
-        error={{
-          content: 'Please enter a valid email address',
-          pointing: 'below',
-        }}
-      />
-      <Form.Field
-        id='form-button-control-public'
-        control={Button}
-        content='Confirm'
-        label='Label with htmlFor'
-      />
-    </Form>
-  </div>
-)
-export default Appointments
+        <TextareaAutosize className={classes.textareaAutosize} aria-label="minimum height" rowsMin={3} placeholder="Message : max character 200" />
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          endIcon={<SendIcon>send</SendIcon>}
+        >
+          Send
+      </Button>
+      </form>
+
+      <List className={classes.root} style={{ marginTop: '20px' }}>
+        {appolist.map(al =>
+          <ListItem alignItems="flex-start" style={{ width: '600px' }}>
+            <ListItemAvatar>
+              <Avatar alt="Remy Sharp" src={al.agent.user.avatar} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={'Agent : ' + al.agent.user.firstname + ' ' + al.agent.user.lastname}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.inline}
+                    color="textPrimary"
+                  >
+                    {moment(al.date_time).format("dddd, MMMM D, YYYY")}
+                  </Typography>
+                  {" — I'll be in your neighborhood doing errands this…"}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        )}
+        <Divider variant="inset" component="li" style={{ width: '500px' }} />
+      </List>
+    </div>
+  );
+}
 
