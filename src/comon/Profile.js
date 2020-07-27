@@ -7,6 +7,7 @@ import {
   Form, 
   Divider, 
   Image } from 'semantic-ui-react'
+import { Container } from '@material-ui/core'
 
 
 class Profile extends Component {
@@ -40,8 +41,10 @@ class Profile extends Component {
     // console.log("AV", avatar)
 
     return (
-      <Grid doubling style={{ paddingTop: "20px", paddingLeft: "80px" }}>
-        <Grid.Column width="4">
+      <Grid doubling style={{ padding: "20px" }}>
+                <Grid.Column width="3">
+</Grid.Column>
+        <Grid.Column width="3">
           <Segment>
             <Image src={avatar} />
             <h4>User name: </h4><em><strong style={{ color: "#764b28" }}>{username}</strong></em>
@@ -58,7 +61,7 @@ class Profile extends Component {
             />
           </Segment>
         </Grid.Column>
-        <Grid.Column width="10">
+        <Grid.Column width="7">
           <Segment>
             {this.state.edit
               ? <div>

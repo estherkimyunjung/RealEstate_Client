@@ -29,9 +29,8 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     marginLeft: theme.spacing(3),
     marginRight: theme.spacing(3),
-    width: 200,
+    width: 230,
     fontSize: '20px'
-
   },
   root: {
     width: '100%',
@@ -39,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: 130,
     },
 
     inline: {
@@ -48,17 +47,17 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    width: 150,
     marginTop: 0,
-    marginLeft: '50px',
-    marginRight: '30px'
+    marginLeft: '30px',
+    // marginRight: '30px'
   },
   selectEmpty: {
     marginTop: theme.spacing(3),
   },
   textareaAutosize: {
     marginTop: '10px',
-    width: '600px',
+    width: '800px',
     fontSize: '20px'
   },
   button: {
@@ -125,7 +124,7 @@ export default function Appointments(props) {
             shrink: true,
           }}
         />
-        <TextareaAutosize className={classes.textareaAutosize} aria-label="minimum height" rowsMin={3} placeholder="Message : max character 200" />
+        <TextareaAutosize className={classes.textareaAutosize} aria-label="minimum height" rowsMin={4} placeholder="Message : max character 200" />
         <Button
           variant="contained"
           color="primary"
@@ -138,11 +137,11 @@ export default function Appointments(props) {
 
       <List className={classes.root} style={{ marginTop: '20px' }}>
         {appolist.map(al =>
-          <ListItem alignItems="flex-start" style={{ width: '600px' }}>
+          <ListItem alignItems="flex-start" style={{ width: '700px' }}>
             <ListItemAvatar>
               <Avatar alt="Remy Sharp" src={al.agent.user.avatar} />
             </ListItemAvatar>
-            <ListItemText
+            <ListItemText fontSize='50px'
               primary={'Agent : ' + al.agent.user.firstname + ' ' + al.agent.user.lastname}
               secondary={
                 <React.Fragment>

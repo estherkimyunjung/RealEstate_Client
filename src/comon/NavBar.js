@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from "react-router-dom"
-import { 
-  Segment, 
-  Menu, 
-  Button, 
-  Icon } from 'semantic-ui-react'
+import {
+  Segment,
+  Menu,
+  Button,
+  Icon
+} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import './comon.css'
 
@@ -82,8 +83,8 @@ class NavBar extends Component {
         </Segment>
 
         {/* NavBar */}
-        <Menu widths={7} className="navBar">
-
+        <Menu widths={9} className="navBar">
+          <Menu.Item></Menu.Item>
           {/* Home Button with welcome Message */}
           <Menu.Item>
             <Link to="/home" style={{ color: 'black', textDecoration: 'none' }}>
@@ -144,6 +145,7 @@ class NavBar extends Component {
               <Icon name='plug' /> Contact Us
             </Link>
           </Menu.Item>
+          <Menu.Item></Menu.Item>
         </Menu>
       </div>
     )

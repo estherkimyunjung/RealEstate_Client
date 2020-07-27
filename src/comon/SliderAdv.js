@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
+import { Container, Segment } from 'semantic-ui-react'
 import { Carousel } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './comon.css'
@@ -11,9 +11,10 @@ class SlideAdv extends Component {
     // console.log('properties', this.props.properties)
     
     return (
-      <div>
-        {/* Slide All Properties Advertising Images */}
-        <Container className="sildeCon">
+      <Container className="sildeCon">
+        <Segment>
+
+      {/* Slide All Properties Advertising Images */}
           <Carousel>
             {this.props.properties.map(p =>
               <Carousel.Item key={p.id}>
@@ -29,8 +30,9 @@ class SlideAdv extends Component {
                 </Carousel.Caption>
               </Carousel.Item>)}
           </Carousel>
+          </Segment>
+
         </Container>
-      </div>
     )
   }
 }
