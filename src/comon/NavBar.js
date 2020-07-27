@@ -82,7 +82,8 @@ class NavBar extends Component {
         </Segment>
 
         {/* NavBar */}
-        <Menu widths={7} className="navBar">
+        <Menu widths={9} className="navBar">
+          <Menu.Item></Menu.Item>
 
           {/* Home Button with welcome Message */}
           <Menu.Item>
@@ -144,6 +145,8 @@ class NavBar extends Component {
               <Icon name='plug' /> Contact Us
             </Link>
           </Menu.Item>
+          <Menu.Item></Menu.Item>
+
         </Menu>
       </div>
     )
