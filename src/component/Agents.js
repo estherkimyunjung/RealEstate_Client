@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import AgentDetail from './AgentDetail'
 import {
   Grid,
   Segment,
@@ -41,12 +42,9 @@ class Agents extends Component {
                 <Table.Cell>Location</Table.Cell>
                 <Table.Cell>Zip code {zipcode}</Table.Cell>
               </Table.Row>
-              <Table.Row>
-                <Table.Cell>License</Table.Cell>
-                <Table.Cell>{license}</Table.Cell>
-              </Table.Row>
             </Table.Body>
           </Table>
+          <AgentDetail agent={this.props.agent}/>
         </Segment>
       </Grid.Column>
     );
