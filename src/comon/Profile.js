@@ -64,7 +64,7 @@ class Profile extends Component {
           <Segment>
             {this.state.edit
               ? <div>
-                <Form style={{ height: '62vh' }}>
+                <Form style={{ height: '57vh' }}>
                   <Form.Field>
                     <label style={{ marginTop: '15px'}}><strong>User name</strong></label>
                     <input 
@@ -124,7 +124,7 @@ class Profile extends Component {
                       type="text" 
                       onChange={(e) => this.handleChange(e.target.name, e.target.value)} 
                       placeholder='https://nofiredrills.com/wp-content/uploads/2016/10/myavatar.png' 
-                      style={{ color: "#764b28", marginBottom:'25px' }}
+                      style={{ color: "#764b28", marginBottom:'55px' }}
                     />
                   </Form.Field>
                   <Button 
@@ -141,7 +141,7 @@ class Profile extends Component {
                 </Form>
               </div>
               : <div style={{minHeight: '625px'}}>
-                <Appointments appointments={this.props.appointments} user={this.state}/>
+                <Appointments appointments={this.props.appointments} user={this.state} agents={this.props.agents} addAppointment={this.props.addAppointment}/>
               </div>
             }
           </Segment>

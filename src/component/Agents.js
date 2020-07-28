@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import AgentDetail from './AgentDetail'
 import {
   Grid,
   Segment,
@@ -14,7 +15,7 @@ class Agents extends Component {
 
 
   render() {
-    console.log("Agents", this.props.agents)
+    // console.log("Agents", this.props.agents)
     // let Auser = this.props.agents.map(a => a.user)
     // console.log("AU", Auser[0].firstname)
     const {firstname, lastname, email, avatar, zipcode} = this.props.agent.user
@@ -35,18 +36,15 @@ class Agents extends Component {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>E-mail</Table.Cell>
-                <Table.Cell>{email}</Table.Cell>
+                <Table.Cell fontSize='10px'>{email}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Location</Table.Cell>
                 <Table.Cell>Zip code {zipcode}</Table.Cell>
               </Table.Row>
-              <Table.Row>
-                <Table.Cell>License</Table.Cell>
-                <Table.Cell>{license}</Table.Cell>
-              </Table.Row>
             </Table.Body>
           </Table>
+          <AgentDetail agent={this.props.agent}/>
         </Segment>
       </Grid.Column>
     );

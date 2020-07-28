@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment'
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
@@ -67,27 +67,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Appointments(props) {
-
+console.log("Agent", props)
   const classes = useStyles();
 
-  const allAgent = props.appointments.map(a => a.agent.user.firstname)
-  console.log("ALL", [...new Set(allAgent)])
+  // const allAgent = props.appointments.map(a => a.agent.user.firstname +' '+ a.agent.user.lastname)
+  const allAgents = props.agents.map(a => a.id +' '+ a.user.firstname +' '+ a.user.lastname)
+  // console.log("ALL", [...new Set(allAgent)])
 
-  const [agent = [...new Set(allAgent)], setAgent] = React.useState('');
-  console.log("AAA", agent)
+  const [agents, setAgents] = React.useState([...new Set(allAgents)]);
+  const [agent, setAgent] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [date_time, setDate_time] = React.useState('');
+  
+  const handleChange = (event, stateChange) => {
+    stateChange(event.target.value)
+  }
 
-  const handleChange = (event) => {
-    setAgent(event.target.value);
-    console.log("EVE", event)
-  };
 
   const appolist = props.appointments.filter(ap => ap.client_id === props.user.id)
   const agentAppo = appolist.map(li => li.agent.user.firstname)
-  console.log("AgAp", agentAppo)
+  // console.log("AgAp", agentAppo)
   return (
     <div>
       <h1 style={{marginBottom: '40px', paddingLeft: '20px'}}>Appointment Informations</h1>
-      <form className={classes.container} noValidate onSubmit={(e) => {this.props.addAppointment(e,agent)}}>
+      <form 
+        className={classes.container} 
+        noValidate 
+        onSubmit={(e) => {props.addAppointment(message, agent, date_time, e)}}
+      >
         <TextField
           id="outlined-read-only-input"
           label="Read Only"
@@ -103,13 +110,13 @@ export default function Appointments(props) {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             value={agent}
-            onChange={handleChange}
+            onChange ={(e) =>{handleChange(e, setAgent)}}
             label="Agent"
           >
             <MenuItem value="">
               <em>Select Option</em>
             </MenuItem>
-            <MenuItem value={agent}>{agent}</MenuItem>
+            {agents.map(ag => <MenuItem value={ag}>{ag}</MenuItem>)}
           </Select>
         </FormControl>
         <TextField
@@ -121,14 +128,19 @@ export default function Appointments(props) {
           InputLabelProps={{
             shrink: true,
           }}
-        />
+          value={date_time}
+          onChange ={(e) =>{handleChange(e, setDate_time)}}
+          />
         <TextareaAutosize 
           className={classes.textareaAutosize} 
           aria-label="minimum height" 
           rowsMin={2} 
           placeholder="Message : max character 200"
+          value={message}
+          onChange ={(e) =>{handleChange(e, setMessage)}}
         />
         <Button
+          type="submit" 
           variant="contained"
           color="primary"
           className={classes.button}
