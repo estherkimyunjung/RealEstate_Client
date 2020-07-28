@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-// import DateFnsUtils from '@date-io/date-fns';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
@@ -80,18 +79,6 @@ console.log("Agent", props)
   const [message, setMessage] = React.useState('');
   const [date_time, setDate_time] = React.useState('');
   
-  // console.log("AAA", agent)
-
-  // const handleChange = (event) => {
-  //   console.log("EVE", event)
-
-  //   // debugger
-  //   setAgent(event.target.value);
-  //   setMessage(event.target.value);
-  //   setAgents([...agents, agent]);
-  //   setDate_time(event.target.value)
-  // };
-
   const handleChange = (event, stateChange) => {
     stateChange(event.target.value)
   }
