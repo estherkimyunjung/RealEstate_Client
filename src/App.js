@@ -83,7 +83,7 @@ class App extends React.Component {
   addAppointment = (message, Finagent, date_time, e) => {
     // console.log("ADDAPPOE", e)
     // console.log("ADDMes", message)
-    console.log("ADDAgent", Finagent)
+    // console.log("ADDAgent", Finagent)
     // console.log("ADDDate", date_time)
     // debugger
     e.preventDefault()
