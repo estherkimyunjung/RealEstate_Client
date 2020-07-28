@@ -7,11 +7,6 @@ import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import Chip from '@material-ui/core/Chip';
-import SaveIcon from '@material-ui/icons/Save';
-import PrintIcon from '@material-ui/icons/Print';
-import ShareIcon from '@material-ui/icons/Share';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => ({
   root: {
