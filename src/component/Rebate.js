@@ -41,7 +41,7 @@ class Rebate extends React.Component {
     
     e.target.reset()
 
-    const form = await axios.post('/api/email', {
+    const form = await axios.post('/api/serveremail', {
       firstname,
       lastname,
       address,
