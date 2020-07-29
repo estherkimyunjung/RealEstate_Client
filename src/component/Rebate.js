@@ -23,20 +23,21 @@ class Rebate extends React.Component {
       address: '',
       message: '',
       agent: '',
-      email: ''
+      email: '',
+      file: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   async handleSubmit(e) {
     e.preventDefault()
     
-    const { firstname, lastname, address,  message, agent, email} = this.state
+    const { firstname, lastname, address,  message, agent, email, file} = this.state
     
     e.target.reset()
 
@@ -46,7 +47,8 @@ class Rebate extends React.Component {
       address,
       message,
       agent,
-      email
+      email,
+      file
     })
   }
 
@@ -75,10 +77,13 @@ class Rebate extends React.Component {
             <br /><br /><br />
             <Form onSubmit={(e)=>{this.handleSubmit(e)}}>
               <Form.Group unstackable widths={2}>
-                <Form.Input name='firstname' label='First name' value = {this.props.user.firstname} />
-                <Form.Input name='lastname' label='Last name' value = {this.props.user.lastname} />
+                <Form.Input onChange={this.handleChange} name='firstname' label='First name' value = {this.props.user.firstname} />
+                <Form.Input onChange={this.handleChange} name='lastname' label='Last name' value = {this.props.user.lastname} />
               </Form.Group>
+              <Form.Group unstackable widths={2}>
               <Form.Input onChange={this.handleChange} name='address' label='Address' placeholder='Address' />
+              <Form.Input onChange={this.handleChange} type='file' name='file' label='Rebate Form' placeholder='attach file here' />
+              </Form.Group>
               <Form.Field
                 onChange={this.handleChange}
                 name='message'
