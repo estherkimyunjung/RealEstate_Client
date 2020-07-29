@@ -14,6 +14,7 @@ import ContentCont from './container/ContentCont';
 import PropertiesCont from './container/PropertiesCont';
 import Rebate from './component/Rebate'
 import { Button, Spinner } from 'react-bootstrap';
+import Mailer from './component/Mailer';
 
 const USER_API = 'http://localhost:3000/api/v1/users'
 // const CLIENT_API = 'http://localhost:3000/api/v1/clients'
@@ -258,7 +259,8 @@ class App extends React.Component {
                     editUserInfo={this.editUserInfo}
                     user={this.state.user}
                     agents={this.state.agents}
-                    appointments={this.state.appointments} />
+                    appointments={this.state.appointments} 
+                    />
                   : <Redirect to='/login' />}
               />
               <Route exact path='/home' render={(routerProps) =>
@@ -279,11 +281,18 @@ class App extends React.Component {
                   handleStateChange={this.handleStateChanges} />}
               />
               <Route exact path='/rebate' render={(routerProps) =>
-                <Rebate
+                <Mailer
                   user={this.state.user}
                   agents={this.state.agents}
                   appointments={this.state.appointments}
-                  handleStateChange={this.handleStateChanges} />}
+                  handleStateChange={this.handleStateChanges}
+                /> 
+                // <Rebate
+                //   user={this.state.user}
+                //   agents={this.state.agents}
+                //   appointments={this.state.appointments}
+                //   handleStateChange={this.handleStateChanges} />
+                }
               />
               <Route path='/aboutUs' component={AboutUs} />
               <Route path='/contactUs' component={ContactUs} />
