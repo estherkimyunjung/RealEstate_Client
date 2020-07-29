@@ -30,8 +30,8 @@ class Rebate extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   async handleSubmit(e) {
@@ -41,7 +41,7 @@ class Rebate extends React.Component {
     
     e.target.reset()
 
-    const form = await axios.post('/api/serveremail', {
+    const form = await axios.post('/api/email', {
       firstname,
       lastname,
       address,
@@ -77,8 +77,8 @@ class Rebate extends React.Component {
             <br /><br /><br />
             <Form onSubmit={(e)=>{this.handleSubmit(e)}}>
               <Form.Group unstackable widths={2}>
-                <Form.Input name='firstname' label='First name' value = {this.props.user.firstname} />
-                <Form.Input name='lastname' label='Last name' value = {this.props.user.lastname} />
+                <Form.Input onChange={this.handleChange} name='firstname' label='First name' value = {this.props.user.firstname} />
+                <Form.Input onChange={this.handleChange} name='lastname' label='Last name' value = {this.props.user.lastname} />
               </Form.Group>
               <Form.Group unstackable widths={2}>
               <Form.Input onChange={this.handleChange} name='address' label='Address' placeholder='Address' />
