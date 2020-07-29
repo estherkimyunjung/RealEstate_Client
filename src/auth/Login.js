@@ -54,7 +54,7 @@ class Login extends Component {
             <div className="auth-card">
               <Segment stacked>
                 <Header as="h3" color="black">
-                  Welcome Please Sign in
+                  Welcome Please Login
                 </Header>
                 <Form onSubmit={this.logIn} size="large" className="auth-form" autoComplete="off">
                   <label className="label-input" >Username</label>

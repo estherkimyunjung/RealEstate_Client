@@ -64,7 +64,7 @@ class Profile extends Component {
           <Segment>
             {this.state.edit
               ? <div>
-                <Form style={{ height: '57vh' }}>
+                <Form style={{ height: '65vh' }}>
                   <Form.Field>
                     <label style={{ marginTop: '15px'}}><strong>User name</strong></label>
                     <input 

@@ -14,15 +14,15 @@ import '../auth/auth.css'
 
 
 class Rebate extends React.Component {
+
   constructor(){
     super()
-
     this.state = {
-      firstname: '',
-      lastname: '',
+      firstname: 'Esther',
+      lastname: 'Kim',
       address: '',
       message: '',
-      agent: '',
+      agent: 'Newton Williams',
       email: '',
       file: ''
     }
@@ -36,7 +36,7 @@ class Rebate extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault()
-    
+console.log(e)
     const { firstname, lastname, address,  message, agent, email, file} = this.state
     
     e.target.reset()
