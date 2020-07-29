@@ -46,8 +46,7 @@ class Mailer extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
-    const { firstname, lastname, address,  message, agent, email, file} = this.state
+    event.target.reset()
 
     fetch(`http://localhost:8080/api/mail`, {
       headers: {

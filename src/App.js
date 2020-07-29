@@ -12,7 +12,6 @@ import AboutUs from './comon/AboutUs';
 import Profile from './comon/Profile'
 import ContentCont from './container/ContentCont';
 import PropertiesCont from './container/PropertiesCont';
-import Rebate from './component/Rebate'
 import { Button, Spinner } from 'react-bootstrap';
 import Mailer from './component/Mailer';
 
@@ -287,11 +286,6 @@ class App extends React.Component {
                   appointments={this.state.appointments}
                   handleStateChange={this.handleStateChanges}
                 /> 
-                // <Rebate
-                //   user={this.state.user}
-                //   agents={this.state.agents}
-                //   appointments={this.state.appointments}
-                //   handleStateChange={this.handleStateChanges} />
                 }
               />
               <Route path='/aboutUs' component={AboutUs} />

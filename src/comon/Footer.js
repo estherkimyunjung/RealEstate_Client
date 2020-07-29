@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Chat from './Chat'
 import { 
   Container, 
   Grid, 
@@ -29,6 +30,7 @@ class Footer extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
+            <Chat/>
           </Segment>
         </Container>
       </Segment>

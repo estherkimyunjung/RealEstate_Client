@@ -1,5 +1,5 @@
 import React from 'react'
-import { Popup, Card, Image, Rating, Message } from 'semantic-ui-react'
+import { Popup, Card, Message } from 'semantic-ui-react'
 
 const PopupExampleTrigger = (props) => (
   <Popup
