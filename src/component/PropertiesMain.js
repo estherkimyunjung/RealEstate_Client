@@ -9,6 +9,7 @@ import {
   Icon, 
   Table } from 'semantic-ui-react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './component.css'
 
 
 class PropertiesMain extends Component {
@@ -19,7 +20,7 @@ class PropertiesMain extends Component {
     
     return (
       <Grid.Column>
-        <Segment>
+        <Segment className='propertiesMain'>
           <Image src={image} size='big' style={{height:'160px'}}/>
           <p>{address}</p>
           <Divider horizontal>
