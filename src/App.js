@@ -70,14 +70,14 @@ class App extends React.Component {
 
   fetchAppointments = () => {
     fetch(APPOINTMENT_API)
-    .then(res => res.json())
-    .then(appointments => {
-      // console.log("appointments", appointments)
-      this.setState({
-        appointments: appointments,
-        isLoading: false
+      .then(res => res.json())
+      .then(appointments => {
+        // console.log("appointments", appointments)
+        this.setState({
+          appointments: appointments,
+          isLoading: false
+        })
       })
-    })
   }
 
   addAppointment = (message, Finagent, date_time, e) => {
@@ -87,12 +87,12 @@ class App extends React.Component {
     // console.log("ADDDate", date_time)
     // debugger
     e.preventDefault()
-    
+
     // const findAgent = (Finagent) => {
     //  return this.state.agents.find( agent => (agent.user.firstname +' '+ agent.user.lastname === Finagent))
     // }
     // debugger
-// console.log("FA",findAgent(Finagent))
+    // console.log("FA",findAgent(Finagent))
     const options = {
       method: "POST",
       headers: {
@@ -107,16 +107,16 @@ class App extends React.Component {
         agent_id: parseInt(Finagent.split(' ')[0])
       })
     }
-    
-    fetch(APPOINTMENT_API , options)
-    .then(res => res.json())
-    .then(Newappointment => {
-      console.log("Newappointment", Newappointment)
-      this.setState({
-        appointments: [...this.state.appointments, Newappointment]
+
+    fetch(APPOINTMENT_API, options)
+      .then(res => res.json())
+      .then(Newappointment => {
+        console.log("Newappointment", Newappointment)
+        this.setState({
+          appointments: [...this.state.appointments, Newappointment]
+        })
+        this.fetchAppointments()
       })
-      this.fetchAppointments()
-    })
     e.target.reset()
   }
 
@@ -254,12 +254,12 @@ class App extends React.Component {
               <Route exact path="/profile" component={() =>
                 this.state.token
                   ? <Profile
-                  addAppointment={this.addAppointment}
+                    addAppointment={this.addAppointment}
                     editUserInfo={this.editUserInfo}
                     user={this.state.user}
                     agents={this.state.agents}
-                    appointments={this.state.appointments} 
-                    />
+                    appointments={this.state.appointments}
+                  />
                   : <Redirect to='/login' />}
               />
               <Route exact path='/home' render={(routerProps) =>
@@ -280,13 +280,14 @@ class App extends React.Component {
                   handleStateChange={this.handleStateChanges} />}
               />
               <Route exact path='/rebate' render={(routerProps) =>
-                <Mailer
-                  user={this.state.user}
-                  agents={this.state.agents}
-                  appointments={this.state.appointments}
-                  handleStateChange={this.handleStateChanges}
-                /> 
-                }
+                this.state.token
+                ? <Mailer
+                    user={this.state.user}
+                    agents={this.state.agents}
+                    appointments={this.state.appointments}
+                    handleStateChange={this.handleStateChanges}
+                  />
+                : <Redirect to='/login' />}
               />
               <Route path='/aboutUs' component={AboutUs} />
               <Route path='/contactUs' component={ContactUs} />
