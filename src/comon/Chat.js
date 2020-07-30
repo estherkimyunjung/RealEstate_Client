@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 
-import logo from '../logo.svg';
+import logo from '../image/com1.png'
 
 function Chat() {
 

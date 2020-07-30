@@ -171,16 +171,16 @@ class App extends React.Component {
 
   sortProperties = (value) => {
     // console.log("SORT", value)
-    let sorted = [...this.state.displayPro]
+    let sorted = [...this.state.properties]
 
     switch (value) {
       case "Price (High to Low)":
         return this.setState({
-          displayPro: sorted.sort((a, b) => parseInt(b.prices) - parseInt(a.prices))
+          displayPro: sorted.sort((a, b) => parseInt(b.prices.replace(/,/g, '')) - parseInt(a.prices.replace(/,/g, '')))
         })
       case "Price (Low to High)":
         return this.setState({
-          displayPro: sorted.sort((a, b) => parseInt(a.prices) - parseInt(b.prices))
+          displayPro: sorted.sort((a, b) => parseInt(a.prices.replace(/,/g, '')) - parseInt(b.prices.replace(/,/g, '')))
         })
       case "Newest":
         return this.setState({
@@ -196,7 +196,7 @@ class App extends React.Component {
         })
       case "Square Feet":
         return this.setState({
-          displayPro: sorted.sort((a, b) => a.sqft.localeCompare(b.sqft))
+          displayPro: sorted.sort((a, b) => parseInt(b.sqft.replace(/,/g, '')) - parseInt(a.sqft.replace(/,/g, '')))
         })
       case "Zipcode":
         return this.setState({
