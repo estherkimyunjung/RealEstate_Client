@@ -23,7 +23,7 @@ class ContentCont extends Component {
         <Container>
           <Segment>
           <h1 style={{textAlign: 'center', padding: '10px', color: '#7a6d6b'}}>
-            <strong>TOP 4 Newest Properties</strong>
+            <strong>TOP 4 Recent Properties for Sale</strong>
           </h1>
             <Grid stackable columns={4}>
               {this.props.properties.slice(-4).map(p =>
